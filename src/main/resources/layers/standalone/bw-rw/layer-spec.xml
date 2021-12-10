@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
+            name="bw-rw">
+    <!-- A bedework system with updates to data -->
+
+    <dependencies>
+        <layer name="bw-common"/>
+    </dependencies>
+
+    <!-- Logging config -->
+
+    <feature spec="subsystem.logging.periodic-rotating-file-handler">
+        <param name="periodic-rotating-file-handler" value="CHANGES"/>
+        <param name="named-formatter" value="PATTERN"/>
+        <param name="file" value="{relative-to=jboss.server.log.dir,path=bwchange.log}"/>
+        <param name="suffix" value=".yyyy-MM-dd"/>
+        <param name="append" value="true"/>
+        <param name="autoflush" value="true"/>
+    </feature>
+
+    <feature spec="subsystem.logging.logger">
+        <param name="logger" value="org.bedework.chgnote"/>
+        <param name="level" value="INFO"/>
+        <param name="use-parent-handlers" value="false"/>
+        <param name="handlers" value="[CHANGES]"/>
+    </feature>
+
+    <!-- Set up with local ldap config: this should be a layer? -->
+
+    <feature spec="subsystem.elytron.ldap-realm">
+        <param name="ldap-realm" value="bedeworkRealm"/>
+        <param name="dir-context" value="bedeworkLdapConnection"/>
+        <param name="identity-mapping" value="{rdn-identifier=uid, search-base-dn=&quot;ou=accounts,dc=bedework,dc=org&quot;}"/>
+        <param name="attribute-mapping" value="{from=uid, to=Roles, filter=&quot;(uniqueMember={1})&quot;,filter-base-dn=&quot;ou=groups,dc=bedework,dc=org&quot;}"/>
+    </feature>
+
+    <feature spec="subsystem.elytron.mappers.simple-role-decoder">
+        <param name="simple-role-decoder" value="from-roles-attribute"/>
+        <param name="attribute" value="Roles"/>
+    </feature>
+
+    <feature spec="subsystem.elytron.security-domain">
+        <param name="security-domain" value="bedeworkSD"/>
+        <param name="default-realm" value="bedeworkRealm"/>
+        <param name="permission-mapper" value="default-permission-mapper"/>
+        <param name="security-event-listener" value="local-audit"/>
+        <param name="realms" value="[{realm=bedeworkRealm,role-decoder=from-roles-attribute}]"/>
+    </feature>
+
+    <feature spec="subsystem.elytron.http-authentication-factory">
+        <param name="http-authentication-factory" value="bedeworkAuth"/>
+        <param name="http-server-mechanism-factory" value="global"/>
+        <param name="security-domain" value="bedeworkSD"/>
+        <param name="mechanism-configurations" value="[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=bedework}]},{mechanism-name=FORM}]"/>
+    </feature>
+
+    <feature spec="subsystem.elytron.dir-context">
+        <param name="dir-context" value="bedeworkLdapConnection"/>
+        <param name="url" value="ldap://localhost:10389"/>
+        <param name="principal" value="uid=admin,ou=system"/>
+        <param name="credential-reference" value="{clear-text=&quot;secret&quot;}"/>
+    </feature>
+
+    <feature spec="subsystem.undertow">
+        <feature spec="subsystem.undertow.application-security-domain">
+            <param name="application-security-domain" value="bedework" />
+            <param name="http-authentication-factory" value="bedeworkAuth"/>
+        </feature>
+    </feature>
+</layer-spec>
