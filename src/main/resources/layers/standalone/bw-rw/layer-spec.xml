@@ -4,6 +4,7 @@
     <!-- A bedework system with updates to data -->
 
     <dependencies>
+        <layer name="datasources-web-server"/>
         <layer name="bw-common"/>
     </dependencies>
 

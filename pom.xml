@@ -21,14 +21,14 @@
          The exec-maven-plugin will execute a goal to generate
          the module templates
     -->
-    <bw-wfmodules-location>../bw-wfmodules/</bw-wfmodules-location>
+    <bw-wfmodules-location>${project.basedir}/../bw-wfmodules/</bw-wfmodules-location>
 
     <resourcesDir>${project.build.directory}/generated/resources</resourcesDir>
 
     <org.wildfly.galleon-plugins.version>5.2.6.Final</org.wildfly.galleon-plugins.version>
 
+    <feature-pack.resources.directory>${project.basedir}/src/main/resources</feature-pack.resources.directory>
     <!--
-    <feature-pack.resources.directory>${basedir}/../../feature-packs/adapter-feature-pack/src/main/resources</feature-pack.resources.directory>
     <outputDirectory>${basedir}/target/packages/</outputDirectory>
     -->
   </properties>
@@ -123,6 +123,7 @@
       <artifactId>wildfly-galleon-maven-plugin</artifactId>
       <version>${org.wildfly.galleon-plugins.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-resources-plugin</artifactId>
@@ -191,7 +192,8 @@
                   <directory>${feature-pack.resources.directory}</directory>
                   <includes>
                     <include>content/**</include>
-                    <include>modules/**</include>
+                    <include>layers/**</include>
+                    <include>packages/**</include>
                   </includes>
                 </resource>
               </resources>
@@ -199,6 +201,7 @@
           </execution>
         </executions>
       </plugin>
+
       <plugin>
         <groupId>org.wildfly.galleon-plugins</groupId>
         <artifactId>wildfly-galleon-maven-plugin</artifactId>

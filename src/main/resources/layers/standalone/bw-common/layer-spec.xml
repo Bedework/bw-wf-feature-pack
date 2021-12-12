@@ -2,7 +2,8 @@
 <layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
             name="bw-common">
     <dependencies>
-        <layer name="datasources-web-server"/>
+        <layer name="core-server"/>
+        <layer name="web-server"/>
         <layer name="jms-activemq"/>
         <layer name="webservices"/>
     </dependencies>
