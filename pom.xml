@@ -23,7 +23,7 @@
     -->
     <bw-wfmodules-location>${project.basedir}/../bw-wfmodules/</bw-wfmodules-location>
 
-    <resourcesDir>${project.build.directory}/generated/resources</resourcesDir>
+    <resourcesDir>${project.build.directory}/resources</resourcesDir>
 
     <org.wildfly.galleon-plugins.version>5.2.6.Final</org.wildfly.galleon-plugins.version>
 
@@ -146,12 +146,12 @@
             </goals>
 
             <configuration>
-              <executable>maven</executable>
+              <executable>mvn</executable>
               <workingDirectory>${bw-wfmodules-location}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
                 <argument>-Dorg.bedework.thin.modules=true</argument>
-                <argument>-Dorg.bedework.build.directory=${resourcesDir}</argument>
+                <argument>-Dorg.bedework.modules.parent.path=${resourcesDir}</argument>
                 <argument>package</argument>
               </arguments>
             </configuration>
@@ -162,6 +162,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
+        <version>${maven.resources.plugin.version}</version>
         <executions>
           <execution>
             <id>copy-resources</id>
@@ -205,6 +206,7 @@
       <plugin>
         <groupId>org.wildfly.galleon-plugins</groupId>
         <artifactId>wildfly-galleon-maven-plugin</artifactId>
+        <version>${org.wildfly.galleon-plugins.version}</version>
         <executions>
           <execution>
             <id>galleon-pack-build</id>
