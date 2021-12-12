@@ -12,10 +12,25 @@
     <!-- Maven Plugin Versions -->
     <maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
     <maven.source.plugin.version>2.1.2</maven.source.plugin.version>
+    <exec-maven.plugin.version>3.0.0</exec-maven.plugin.version>
 
-    <feature-pack.resources.directory>${basedir}/../../feature-packs/adapter-feature-pack/src/main/resources</feature-pack.resources.directory>
+    <maven.repository.url>https://repository.jboss.org/nexus/content/groups/public/</maven.repository.url>
+    <maven.redhat.repository.url>https://maven.repository.redhat.com/ga/</maven.redhat.repository.url>
+
+    <!-- Location of the bedework module build project.
+         The exec-maven-plugin will execute a goal to generate
+         the module templates
+    -->
+    <bw-wfmodules-location>../bw-wfmodules/</bw-wfmodules-location>
+
+    <resourcesDir>${project.build.directory}/generated/resources</resourcesDir>
+
     <org.wildfly.galleon-plugins.version>5.2.6.Final</org.wildfly.galleon-plugins.version>
+
+    <!--
+    <feature-pack.resources.directory>${basedir}/../../feature-packs/adapter-feature-pack/src/main/resources</feature-pack.resources.directory>
     <outputDirectory>${basedir}/target/packages/</outputDirectory>
+    -->
   </properties>
 
   <organization>
@@ -71,6 +86,37 @@
     </repository>
   </distributionManagement>
 
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </snapshots>
+      <id>jboss-public-repository-group</id>
+      <name>JBoss Public Repository Group</name>
+      <url>${maven.repository.url}</url>
+      <layout>default</layout>
+    </repository>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </snapshots>
+      <id>jboss-enterprise-maven-repository</id>
+      <name>JBoss Enterprise Maven Repository</name>
+      <url>${maven.redhat.repository.url}</url>
+      <layout>default</layout>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>org.wildfly.galleon-plugins</groupId>
@@ -86,6 +132,32 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>${exec-maven.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>build-module-templates</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+
+            <configuration>
+              <executable>maven</executable>
+              <workingDirectory>${bw-wfmodules-location}</workingDirectory>
+              <arguments>
+                <argument>-Pbedework-dev</argument>
+                <argument>-Dorg.bedework.thin.modules=true</argument>
+                <argument>-Dorg.bedework.build.directory=${resourcesDir}</argument>
+                <argument>package</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
@@ -105,6 +177,7 @@
               </resources>
             </configuration>
           </execution>
+
           <execution>
             <id>copy-feature-pack-resources</id>
             <phase>process-resources</phase>
@@ -129,26 +202,9 @@
       <plugin>
         <groupId>org.wildfly.galleon-plugins</groupId>
         <artifactId>wildfly-galleon-maven-plugin</artifactId>
-        <dependencies>
-          <!--
-              feature-spec-gen uses wildfly-embedded to generate the feature specs, hence the designated
-              wildfly-embedded version must match the pack one
-          -->
-          <dependency>
-            <groupId>org.wildfly.core</groupId>
-            <artifactId>wildfly-embedded</artifactId>
-            <version>${wildfly.core.version}</version>
-          </dependency>
-          <!-- If you add a dependency on wildfly-embedded you need to bring your own transitives -->
-          <dependency>
-            <groupId>org.wildfly.common</groupId>
-            <artifactId>wildfly-common</artifactId>
-            <version>${wildfly.common.version}</version>
-          </dependency>
-        </dependencies>
         <executions>
           <execution>
-            <id>keycloak-adapter-galleon-pack-build</id>
+            <id>galleon-pack-build</id>
             <goals>
               <goal>build-feature-pack</goal>
             </goals>
