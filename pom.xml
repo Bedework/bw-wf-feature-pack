@@ -17,6 +17,8 @@
     <maven.repository.url>https://repository.jboss.org/nexus/content/groups/public/</maven.repository.url>
     <maven.redhat.repository.url>https://maven.repository.redhat.com/ga/</maven.redhat.repository.url>
 
+    <wildfly.version>25.0.1.Final</wildfly.version>
+
     <!-- Location of the bedework module build project.
          The exec-maven-plugin will execute a goal to generate
          the module templates
@@ -128,6 +130,14 @@
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-resources-plugin</artifactId>
       <version>${maven.resources.plugin.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.wildfly</groupId>
+      <artifactId>wildfly-galleon-pack</artifactId>
+      <version>${wildfly.version}</version>
+      <type>zip</type>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 

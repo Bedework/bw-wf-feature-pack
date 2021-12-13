@@ -14,14 +14,16 @@
   ~ limitations under the License.
   -->
 
-<build xmlns="urn:wildfly:feature-pack-build:3.1" producer="org.keycloak:keycloak-adapter-galleon-pack">
+<build xmlns="urn:wildfly:feature-pack-build:3.1" producer="org.bedework:bedework-galleon-pack">
     <dependencies>
         <dependency group-id="org.wildfly" artifact-id="wildfly-galleon-pack">
             <name>org.wildfly:wildfly-galleon-pack</name>
+
+            <default-configs inherit="false">
+                <include name="standalone.xml" model="standalone"/>
+            </default-configs>
         </dependency>
     </dependencies>
-    <default-packages>
-        <package name="modules.all"/>
-        <package name="licenses"/>
-    </default-packages>
+    <generate-feature-specs>
+    </generate-feature-specs>
 </build>

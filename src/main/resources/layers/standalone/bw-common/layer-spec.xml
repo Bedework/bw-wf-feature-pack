@@ -195,7 +195,7 @@
 
     <feature spec="subsystem.logging.logger">
         <param name="logger" value="org.bedework.calcore.common.indexing.BwIndexEsImpl"/>
-        <level name="DEBUG"/>
+        <param name="level" value="DEBUG"/>
     </feature>
 
     <feature spec="subsystem.logging.logger">
@@ -307,61 +307,61 @@
 
             <feature spec="subsystem.messaging-activemq.server.jms-queue">
                 <param name="jms-queue" value="bedework.sysevents.logger"/>
-                <param name="entries" value="activemq/queue/syseventslog bwqueues/syseventsLogger"/>
+                <param name="entries" value="[activemq/queue/syseventslog bwqueues/syseventsLogger]"/>
             </feature>
 
             <feature spec="subsystem.messaging-activemq.server.jms-queue">
                 <param name="jms-queue" value="bedework.sysevents.monitor"/>
-                <param name="entries" value="activemq/queue/monitor bwqueues/syseventsMonitor"/>
+                <param name="entries" value="[activemq/queue/monitor bwqueues/syseventsMonitor]"/>
             </feature>
 
             <feature spec="subsystem.messaging-activemq.server.jms-queue">
                 <param name="jms-queue" value="bedework.crawler"/>
-                <param name="entries" value="activemq/queue/crawler bwqueues/syseventsCrawler"/>
+                <param name="entries" value="[activemq/queue/crawler bwqueues/syseventsCrawler]"/>
             </feature>
 
             <feature spec="subsystem.messaging-activemq.server.jms-queue">
                 <param name="jms-queue" value="bedework.sysevents.changes"/>
-                <param name="entries" value="activemq/queue/changes bwqueues/syseventsChanges"/>
+                <param name="entries" value="[activemq/queue/changes bwqueues/syseventsChanges]"/>
             </feature>
 
             <feature spec="subsystem.messaging-activemq.server.jms-queue">
                 <param name="jms-queue" value="bedework.scheduleIn"/>
-                <param name="entries" value="activemq/queue/schedulerIn bwqueues/syseventsScheduleIn"/>
+                <param name="entries" value="[activemq/queue/schedulerIn bwqueues/syseventsScheduleIn]"/>
             </feature>
 
             <feature spec="subsystem.messaging-activemq.server.jms-queue">
                 <param name="jms-queue" value="bedework.scheduleOut"/>
-                <param name="entries" value="activemq/queue/schedulerOut bwqueues/syseventsScheduleOut"/>
+                <param name="entries" value="[activemq/queue/schedulerOut bwqueues/syseventsScheduleOut]"/>
             </feature>
 
             <feature spec="subsystem.messaging-activemq.server.jms-queue">
                 <param name="jms-queue" value="bedework.sysevents.eventregAction"/>
-                <param name="entries" value="activemq/queue/eventregAction bwqueues/eventregAction"/>
+                <param name="entries" value="[activemq/queue/eventregAction bwqueues/eventregAction]"/>
             </feature>
 
             <feature spec="subsystem.messaging-activemq.server.jms-queue">
                 <param name="jms-queue" value="bedework.sysevents.eventregActionDelay"/>
-                <param name="entries" value="activemq/queue/eventregActionDelay bwqueues/eventregActionDelay"/>
+                <param name="entries" value="[activemq/queue/eventregActionDelay bwqueues/eventregActionDelay]"/>
             </feature>
 
             <feature spec="subsystem.messaging-activemq.server.connection-factory">
                 <param name="connection-factory" value="InVmConnectionFactory"/>
-                <param name="entries" value="java:/ConnectionFactory"/>
-                <param name="connectors" value="in-vm"/>
+                <param name="entries" value="[java:/ConnectionFactory]"/>
+                <param name="connectors" value="[in-vm]"/>
             </feature>
 
             <feature spec="subsystem.messaging-activemq.server.connection-factory">
                 <param name="connection-factory" value="BedeworkConnectionFactory"/>
-                <param name="entries" value="java:/BedeworkConnectionFactory java:/jms/BedeworkConnectionFactory"/>
-                <param name="connectors" value="in-vm"/>
+                <param name="entries" value="[java:/BedeworkConnectionFactory java:/jms/BedeworkConnectionFactory]"/>
+                <param name="connectors" value="[in-vm]"/>
                 <param name="confirmation-window-size" value="10000000"/>
             </feature>
 
             <feature spec="subsystem.messaging-activemq.server.pooled-connection-factory">
-                <param name="connection-factory" value="activemq-ra" />
-                <param name="entries" value="java:/JmsXA java:jboss/DefaultJMSConnectionFactory"/>
-                <param name="connectors" value="in-vm"/>
+                <param name="pooled-connection-factory" value="activemq-ra" />
+                <param name="entries" value="[java:/JmsXA java:jboss/DefaultJMSConnectionFactory]"/>
+                <param name="connectors" value="[in-vm]"/>
                 <param name="transaction" value="xa"/>
             </feature>
         </feature>
@@ -375,6 +375,21 @@
         <feature spec="socket-binding-group.socket-binding">
             <param name="socket-binding" value="secure"/>
             <param name="port" value="8081"/>
+        </feature>
+    </feature>
+
+    <!--
+  <filters>
+            <response-header name="server-header" header-name="Server" header-value="WildFly/22"/>
+    <response-header name="x-powered-by-header" header-name="X-Powered-By" header-value="Undertow/9"/>
+    <error-page name="404-handler" code="404" path="${jboss.home.dir}/bedework-content/Error404.html"/>
+  </filters>
+    -->
+    <feature spec="subsystem.undertow.filters">
+        <feature spec="subsystem.undertow.filters.error-page">
+            <param name="error-page" value="404-handler"/>
+            <param name="code" value="404"/>
+            <param name="path" value="${jboss.home.dir}/bedework-content/Error404.html"/>
         </feature>
     </feature>
 
@@ -393,21 +408,6 @@
         <feature spec="subsystem.undertow.server.http-listener">
             <param name="http-listener" value="default"/>
             <param name="allow-unescaped-characters-in-url" value="true"/>
-        </feature>
-
-        <!--
-      <filters>
-                <response-header name="server-header" header-name="Server" header-value="WildFly/22"/>
-        <response-header name="x-powered-by-header" header-name="X-Powered-By" header-value="Undertow/9"/>
-        <error-page name="404-handler" code="404" path="${jboss.home.dir}/bedework-content/Error404.html"/>
-      </filters>
-        -->
-        <feature spec="subsystem.undertow.server.filters">
-            <feature spec="subsystem.undertow.server.filters.error-page">
-                <param name="error-page" value="404-handler"/>
-                <param name="code" value="404"/>
-                <param name="path" value="${jboss.home.dir}/bedework-content/Error404.html"/>
-            </feature>
         </feature>
 
         <feature spec="subsystem.undertow.server.host">
@@ -451,7 +451,7 @@
 
     <feature spec="subsystem.undertow.handlers">
         <feature spec="subsystem.undertow.handlers.file">
-            <param name="file" value="bedework-content"/>>
+            <param name="file" value="bedework-content"/>
             <param name="path" value="${jboss.home.dir}/bedework-content"/>
             <param name="directory-listing" value="true"/>
         </feature>
