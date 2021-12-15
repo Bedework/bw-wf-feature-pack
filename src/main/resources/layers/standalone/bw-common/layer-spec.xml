@@ -274,19 +274,21 @@
             <param name="journal-type" value="ASYNCIO"/>
 
             <param name="persistence-enabled" value="true"/>
-            <param name="elytron-domain" value="bedeworkSD"/>
-
+            <param name="elytron-domain" value="ApplicationDomain"/>
             <!--
+
                     <address-setting name="#" dead-letter-address="jms.queue.DLQ" expiry-address="jms.queue.ExpiryQueue" max-size-bytes="10485760" page-size-bytes="2097152" message-counter-history-day-limit="10"/>
                     -->
 
             <feature spec="subsystem.messaging-activemq.server.in-vm-connector">
                 <param name="in-vm-connector" value="in-vm"/>
+                <param name="server-id" value="0"/>
                 <unset param="params"/>
             </feature>
 
             <feature spec="subsystem.messaging-activemq.server.in-vm-acceptor">
                 <param name="in-vm-acceptor" value="in-vm"/>
+                <param name="server-id" value="0"/>
                 <unset param="params"/>
             </feature>
 
@@ -384,14 +386,16 @@
     <response-header name="x-powered-by-header" header-name="X-Powered-By" header-value="Undertow/9"/>
     <error-page name="404-handler" code="404" path="${jboss.home.dir}/bedework-content/Error404.html"/>
   </filters>
-    -->
-    <feature spec="subsystem.undertow.filters">
-        <feature spec="subsystem.undertow.filters.error-page">
-            <param name="error-page" value="404-handler"/>
-            <param name="code" value="404"/>
-            <param name="path" value="${jboss.home.dir}/bedework-content/Error404.html"/>
-        </feature>
+
+  /subsystem=undertow/configuration=filter/response-header=server-header:write-attribute(name=header-value,value="JBoss-EAP")
+
+  /subsystem=undertow/configuration=filter/response-header=new-response-header:add(header-name=new-response-header,header-value="My Value")
+    <feature spec="subsystem.undertow.setting.filters">
+        <param name="error-page" value="404-handler"/>
+        <param name="code" value="404"/>
+        <param name="path" value="${jboss.home.dir}/bedework-content/Error404.html"/>
     </feature>
+    -->
 
     <feature spec="subsystem.undertow.server">
         <param name="server" value="default-server" />
@@ -410,6 +414,14 @@
             <param name="allow-unescaped-characters-in-url" value="true"/>
         </feature>
 
+        <!--
+        <feature spec="subsystem.undertow.server.configuration.handler.file">
+            <param name="file" value="bedework-content"/>
+            <param name="path" value="${jboss.home.dir}/bedework-content"/>
+            <param name="directory-listing" value="true"/>
+        </feature>
+        -->
+
         <feature spec="subsystem.undertow.server.host">
             <param name="host" value="default-host" />
             <param name="alias" value="[localhost]"/>
@@ -420,11 +432,12 @@
             <feature spec="subsystem.undertow.server.host.filter-ref">
                 <param name="filter-ref" value="x-powered-by-header"/>
             </feature>
-            -->
+
             <feature spec="subsystem.undertow.server.host.location">
                 <param name="location" value="/"/>
                 <param name="handler" value="bedework-content"/>
             </feature>
+            -->
 
             <feature spec="subsystem.undertow.server.host.filter-ref">
                 <param name="filter-ref" value="server-header"/>
@@ -441,19 +454,27 @@
         </feature>
     </feature>
 
+    <feature spec="subsystem.undertow.configuration.filter.error-page">
+        <param name="error-page" value="404-handler"/>
+        <param name="code" value="404"/>
+        <param name="path" value="${jboss.home.dir}/bedework-content/Error404.html"/>
+    </feature>
+
     <feature spec="subsystem.undertow.servlet-container">
         <param name="servlet-container" value="default" />
         <param name="default-encoding" value="UTF-8" />
-        <feature spec="subsystem.undertow.server.servlet-container.jsp-config">
+        <feature spec="subsystem.undertow.servlet-container.setting.jsp">
             <param name="x-powered-by" value="false" />
         </feature>
     </feature>
 
-    <feature spec="subsystem.undertow.handlers">
+    <!--
+    <feature spec="subsystem.undertow.setting.handlers">
         <feature spec="subsystem.undertow.handlers.file">
             <param name="file" value="bedework-content"/>
             <param name="path" value="${jboss.home.dir}/bedework-content"/>
             <param name="directory-listing" value="true"/>
         </feature>
     </feature>
+    -->
 </layer-spec>

@@ -25,7 +25,7 @@
     -->
     <bw-wfmodules-location>${project.basedir}/../bw-wfmodules/</bw-wfmodules-location>
 
-    <resourcesDir>${project.build.directory}/resources</resourcesDir>
+    <resourcesDir>${project.build.directory}/generated/resources</resourcesDir>
 
     <org.wildfly.galleon-plugins.version>5.2.6.Final</org.wildfly.galleon-plugins.version>
 
@@ -150,7 +150,7 @@
         <executions>
           <execution>
             <id>build-module-templates</id>
-            <phase>compile</phase>
+            <phase>process-resources</phase>
             <goals>
               <goal>exec</goal>
             </goals>
@@ -181,7 +181,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${basedir}/target/resources</outputDirectory>
+              <outputDirectory>${resourcesDir}</outputDirectory>
               <resources>
                 <resource>
                   <directory>${basedir}/src/main/resources</directory>
@@ -197,7 +197,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${basedir}/target/resources</outputDirectory>
+              <outputDirectory>${resourcesDir}</outputDirectory>
               <resources>
                 <resource>
                   <directory>${feature-pack.resources.directory}</directory>
@@ -226,6 +226,7 @@
             <phase>compile</phase>
             <configuration>
               <fork-embedded>false</fork-embedded>
+              <resourcesDir>${resourcesDir}</resourcesDir>
             </configuration>
           </execution>
         </executions>
