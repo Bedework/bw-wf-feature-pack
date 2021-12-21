@@ -1,23 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.bedework</groupId>
+
+  <parent>
+    <groupId>org.bedework</groupId>
+    <artifactId>bedework-parent</artifactId>
+    <version>4.0.0-SNAPSHOT</version>
+  </parent>
+
   <artifactId>bw-wf-feature-pack</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <name>bw-wf-feature-pack</name>
-  <description>Processing of logs for bedework</description>
+  <name>Bedework: Wildfly Galleon feature pack</name>
+  <description>Build Wildfly Galleon feature pack</description>
   <url>https://github.com/Bedework/bw-wf-feature-pack</url>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <!-- Maven Plugin Versions -->
-    <maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
-    <maven.source.plugin.version>2.1.2</maven.source.plugin.version>
-    <exec-maven.plugin.version>3.0.0</exec-maven.plugin.version>
-
-    <maven.repository.url>https://repository.jboss.org/nexus/content/groups/public/</maven.repository.url>
-    <maven.redhat.repository.url>https://maven.repository.redhat.com/ga/</maven.redhat.repository.url>
-
-    <wildfly.version>25.0.1.Final</wildfly.version>
 
     <!-- Location of the bedework module build project.
          The exec-maven-plugin will execute a goal to generate
@@ -35,89 +31,12 @@
     -->
   </properties>
 
-  <organization>
-    <name>Bedework</name>
-    <url>https://github.com/Bedework</url>
-  </organization>
-
-  <licenses>
-    <license>
-      <name>Apache License Version 2.0</name>
-      <url>https://www.apache.org/licenses/LICENSE-2.0.html</url>
-    </license>
-  </licenses>
-
   <scm>
     <connection>scm:git:git@github.com:Bedework/bw-bw-wf-feature-pack.git</connection>
     <developerConnection>scm:git:git@github.com:Bedework/bw-wf-feature-pack.git</developerConnection>
     <url>https://github.com/Bedework/bw-wf-feature-pack</url>
     <tag>HEAD</tag>
   </scm>
-
-  <issueManagement>
-    <system>github</system>
-
-    <url>https://github.com/Bedework/bw-wf-feature-pack/issues</url>
-  </issueManagement>
-
-  <developers>
-    <developer>
-      <name>Mike Douglass</name>
-      <organization>
-        Bedework Commercial Services
-      </organization>
-      <organizationUrl>https://bedework.com/</organizationUrl>
-    </developer>
-    <developer>
-      <name>Arlen Johnson</name>
-      <organization>
-        Spherical Cow Group
-      </organization>
-      <organizationUrl>http:s//sphericalcowgroup.com/</organizationUrl>
-    </developer>
-  </developers>
-
-  <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-  </distributionManagement>
-
-  <repositories>
-    <repository>
-      <releases>
-        <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
-      </snapshots>
-      <id>jboss-public-repository-group</id>
-      <name>JBoss Public Repository Group</name>
-      <url>${maven.repository.url}</url>
-      <layout>default</layout>
-    </repository>
-    <repository>
-      <releases>
-        <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
-      </snapshots>
-      <id>jboss-enterprise-maven-repository</id>
-      <name>JBoss Enterprise Maven Repository</name>
-      <url>${maven.redhat.repository.url}</url>
-      <layout>default</layout>
-    </repository>
-  </repositories>
 
   <dependencies>
     <dependency>
@@ -129,7 +48,7 @@
     <dependency>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-resources-plugin</artifactId>
-      <version>${maven.resources.plugin.version}</version>
+      <version>${version.resources.plugin}</version>
     </dependency>
 
     <dependency>
@@ -146,7 +65,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>${exec-maven.plugin.version}</version>
+        <version>${version.exec.plugin}</version>
         <executions>
           <execution>
             <id>build-module-templates</id>
