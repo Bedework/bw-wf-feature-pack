@@ -40,6 +40,18 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.bedework</groupId>
+      <artifactId>bw-calendar-ro-ear</artifactId>
+      <type>ear</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.bw-tzsvr</groupId>
+      <artifactId>bw-timezone-server-ear</artifactId>
+      <type>ear</type>
+    </dependency>
+
+    <dependency>
       <groupId>org.wildfly.galleon-plugins</groupId>
       <artifactId>wildfly-galleon-maven-plugin</artifactId>
       <version>${org.wildfly.galleon-plugins.version}</version>
@@ -110,6 +122,23 @@
           </execution>
 
           <execution>
+            <id>copy-task-properties</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/build-files/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/src/main/task-properties</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
             <id>copy-feature-pack-resources</id>
             <phase>process-resources</phase>
             <goals>
@@ -146,6 +175,7 @@
             <configuration>
               <fork-embedded>false</fork-embedded>
               <resourcesDir>${resourcesDir}</resourcesDir>
+              <task-properties-file>${project.build.directory}/build-files/task.properties</task-properties-file>
             </configuration>
           </execution>
         </executions>

@@ -6,6 +6,7 @@
     </dependencies>
 
     <packages>
-        <package name="config.calendar"/>
+        <package name="config.calendar-ro"/>
+        <package name="deploy.calendar-ro"/>
     </packages>
 </layer-spec>
