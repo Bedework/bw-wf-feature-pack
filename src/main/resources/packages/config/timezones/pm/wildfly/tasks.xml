@@ -1,7 +1,0 @@
-<?xml version="1.0" ?>
-
-<tasks xmlns="urn:wildfly:wildfly-feature-pack-tasks:2.0">
-    <copy-path src="config/timezones" relative-to="content"
-               target="standalone/configuration/bedework"
-               replace-props="true"/>
-</tasks>

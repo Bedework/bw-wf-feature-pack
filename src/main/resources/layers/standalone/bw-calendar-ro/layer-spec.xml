@@ -4,4 +4,8 @@
     <dependencies>
         <layer name="bw-tzserver"/>
     </dependencies>
+
+    <packages>
+        <package name="config.calendar"/>
+    </packages>
 </layer-spec>

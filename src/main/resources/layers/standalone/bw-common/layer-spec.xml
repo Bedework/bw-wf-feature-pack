@@ -8,6 +8,12 @@
         <layer name="webservices"/>
     </dependencies>
 
+    <!--
+    <packages>
+        <package name="modules.all"/>
+    </packages>
+    -->
+
     <!-- Logging config -->
 
     <feature spec="subsystem.logging.console-handler">
