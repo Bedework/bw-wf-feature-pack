@@ -4,6 +4,6 @@
     <copy-artifact artifact="org.bedework.bw-tzsvr:bw-timezone-server-ear:::ear"
                    to-location="standalone/deployments/" extract="true" />
     <copy-path src="resources/artifact.dodeploy" relative-to="resources"
-               target="standalone/deployments/bw-timezone-server-${bw-timezone-server.version}.dodeploy"
+               target="standalone/deployments/bw-timezone-server-ear-${bw-timezone-server.version}.dodeploy"
                replace-props="true"/>
 </tasks>

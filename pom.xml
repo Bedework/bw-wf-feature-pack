@@ -23,6 +23,8 @@
 
     <resourcesDir>${project.build.directory}/generated/resources</resourcesDir>
 
+    <modulesDir>${project.build.directory}/generated-modules</modulesDir>
+
     <org.wildfly.galleon-plugins.version>5.2.6.Final</org.wildfly.galleon-plugins.version>
 
     <feature-pack.resources.directory>${project.basedir}/src/main/resources</feature-pack.resources.directory>
@@ -65,7 +67,7 @@
 
     <dependency>
       <groupId>org.wildfly</groupId>
-      <artifactId>wildfly-galleon-pack</artifactId>
+      <artifactId>wildfly-ee-galleon-pack</artifactId>
       <version>${wildfly.version}</version>
       <type>zip</type>
       <scope>provided</scope>
@@ -92,7 +94,8 @@
               <arguments>
                 <argument>-Pbedework-dev</argument>
                 <argument>-Dorg.bedework.thin.modules=true</argument>
-                <argument>-Dorg.bedework.modules.parent.path=${resourcesDir}</argument>
+                <argument>-Dorg.bedework.modules.parent.path=${modulesDir}</argument>
+                <argument>clean</argument>
                 <argument>package</argument>
               </arguments>
             </configuration>
@@ -105,22 +108,6 @@
         <artifactId>maven-resources-plugin</artifactId>
         <version>${version.resources.plugin}</version>
         <executions>
-          <execution>
-            <id>copy-resources</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${basedir}/src/main/resources</directory>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-
           <execution>
             <id>copy-task-properties</id>
             <phase>process-resources</phase>
@@ -139,7 +126,7 @@
           </execution>
 
           <execution>
-            <id>copy-feature-pack-resources</id>
+            <id>copy-feature-pack-content-resources</id>
             <phase>process-resources</phase>
             <goals>
               <goal>copy-resources</goal>
@@ -151,9 +138,45 @@
                   <directory>${feature-pack.resources.directory}</directory>
                   <includes>
                     <include>content/**</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-feature-pack-layer-package-resources</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${feature-pack.resources.directory}</directory>
+                  <includes>
                     <include>layers/**</include>
                     <include>packages/**</include>
                   </includes>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-feature-pack-module-resources</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}/modules/system/layers/base</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${modulesDir}/modules</directory>
+                  <filtering>true</filtering>
                 </resource>
               </resources>
             </configuration>
