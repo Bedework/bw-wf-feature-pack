@@ -3,5 +3,5 @@
 <tasks xmlns="urn:wildfly:wildfly-feature-pack-tasks:3.0">
     <copy-artifact artifact="org.bedework:bw-calendar-ro-ear:::ear" to-location="standalone/deployments/" extract="true" />
     <copy-path src="resources/artifact.dodeploy" relative-to="resources"
-               target="standalone/deployments/bw-calendar-ro-ear-${bw-calendar-client.version}.dodeploy" />
+               target="standalone/deployments/bw-calendar-ro-ear-${bw-calendar-client.version}.ear.dodeploy" />
 </tasks>

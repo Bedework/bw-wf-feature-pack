@@ -384,23 +384,6 @@
         </feature>
     </feature>
 
-    <!--
-  <filters>
-            <response-header name="server-header" header-name="Server" header-value="WildFly/22"/>
-    <response-header name="x-powered-by-header" header-name="X-Powered-By" header-value="Undertow/9"/>
-    <error-page name="404-handler" code="404" path="${jboss.home.dir}/bedework-content/Error404.html"/>
-  </filters>
-
-  /subsystem=undertow/configuration=filter/response-header=server-header:write-attribute(name=header-value,value="JBoss-EAP")
-
-  /subsystem=undertow/configuration=filter/response-header=new-response-header:add(header-name=new-response-header,header-value="My Value")
-    <feature spec="subsystem.undertow.setting.filters">
-        <param name="error-page" value="404-handler"/>
-        <param name="code" value="404"/>
-        <param name="path" value="${jboss.home.dir}/bedework-content/Error404.html"/>
-    </feature>
-    -->
-
     <feature spec="subsystem.undertow.server">
         <param name="server" value="default-server" />
         <feature spec="subsystem.undertow.server.http-listener">
@@ -410,7 +393,7 @@
             <param name="redirect-socket" value="https" />
             <param name="proxy-address-forwarding" value="true"/>
             <param name="enable-http2" value="true"/>
-            <param name="socket-binding" value="http"/>
+            <param name="socket-binding" value="secure"/>
         </feature>
 
         <feature spec="subsystem.undertow.server.http-listener">
@@ -441,7 +424,6 @@
                 <param name="location" value="/"/>
                 <param name="handler" value="bedework-content"/>
             </feature>
-            -->
 
             <feature spec="subsystem.undertow.server.host.filter-ref">
                 <param name="filter-ref" value="server-header"/>
@@ -450,6 +432,7 @@
             <feature spec="subsystem.undertow.server.host.filter-ref">
                 <param name="filter-ref" value="x-powered-by-header"/>
             </feature>
+            -->
 
             <feature spec="subsystem.undertow.server.host.filter-ref">
                 <param name="filter-ref" value="404-handler"/>
@@ -463,6 +446,23 @@
         <param name="code" value="404"/>
         <param name="path" value="${jboss.home.dir}/bedework-content/Error404.html"/>
     </feature>
+
+    <!--
+  <filters>
+            <response-header name="server-header" header-name="Server" header-value="WildFly/22"/>
+    <response-header name="x-powered-by-header" header-name="X-Powered-By" header-value="Undertow/9"/>
+    <error-page name="404-handler" code="404" path="${jboss.home.dir}/bedework-content/Error404.html"/>
+  </filters>
+
+  /subsystem=undertow/configuration=filter/response-header=server-header:write-attribute(name=header-value,value="JBoss-EAP")
+
+  /subsystem=undertow/configuration=filter/response-header=new-response-header:add(header-name=new-response-header,header-value="My Value")
+    <feature spec="subsystem.undertow.setting.filters">
+        <param name="error-page" value="404-handler"/>
+        <param name="code" value="404"/>
+        <param name="path" value="${jboss.home.dir}/bedework-content/Error404.html"/>
+    </feature>
+    -->
 
     <feature spec="subsystem.undertow.servlet-container">
         <param name="servlet-container" value="default" />

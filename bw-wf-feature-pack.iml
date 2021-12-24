@@ -9,8 +9,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="bw-calendar-ro-ear" />
     <orderEntry type="module" module-name="bw-timezone-server-ear" />
-    <orderEntry type="module" module-name="bw-timezone-server-war" />
     <orderEntry type="library" name="Maven: org.wildfly.galleon-plugins:wildfly-galleon-maven-plugin:5.2.6.Final" level="project" />
     <orderEntry type="library" name="Maven: org.wildfly.galleon-plugins:wildfly-galleon-plugins:5.2.6.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.galleon:galleon-core:4.2.8.Final" level="project" />
