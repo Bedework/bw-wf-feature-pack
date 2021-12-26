@@ -8,5 +8,6 @@
     <packages>
         <package name="config.calendar-ro"/>
         <package name="deploy.calendar-ro"/>
+        <package name="deploy.xml"/>
     </packages>
 </layer-spec>

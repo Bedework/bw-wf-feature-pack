@@ -13,15 +13,34 @@
   <description>Build Wildfly Galleon feature pack</description>
   <url>https://github.com/Bedework/bw-wf-feature-pack</url>
 
-  <properties>
+  <repositories>
+    <repository>
+      <id>patched-hibernate-repo</id>
+      <url>file:${project.basedir}../bw-wfmodules/repo</url>
+    </repository>
+  </repositories>
 
+  <properties>
     <!-- Location of the bedework module build project.
          The exec-maven-plugin will execute a goal to generate
          the module templates
     -->
     <bw-wfmodules-location>${project.basedir}/../bw-wfmodules/</bw-wfmodules-location>
 
+    <bw-project-bedework>${project.basedir}/../bedework/</bw-project-bedework>
+
+    <bw-project-calendar-xsl>${project.basedir}/../bw-calendar-xsl/</bw-project-calendar-xsl>
+
+    <bw-project-deploy>${project.basedir}/../bw-deploy/</bw-project-deploy>
+
+    <bw-project-timezones>${project.basedir}/../bw-timezone-server/</bw-project-timezones>
+
+    <bw-project-xml>${project.basedir}/../bw-xml/</bw-project-xml>
+
+    <bw-ear-deployment-location>${project.build.directory}/generated/wildfly/standalone/deployments/</bw-ear-deployment-location>
     <resourcesDir>${project.build.directory}/generated/resources</resourcesDir>
+
+    <bw.deployment.properties>${bw-project-bedework}/config/wildfly.feature-pack.deploy.properties</bw.deployment.properties>
 
     <modulesDir>${project.build.directory}/generated-modules</modulesDir>
 
@@ -391,6 +410,11 @@
 
     <dependency>
       <groupId>org.bedework.bw-tzsvr</groupId>
+      <artifactId>bw-timezone-server-tzconvert</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.bw-tzsvr</groupId>
       <artifactId>bw-timezone-server-web</artifactId>
     </dependency>
 
@@ -559,6 +583,12 @@
 
     <dependency>
       <groupId>org.bedework</groupId>
+      <artifactId>bw-xml-ear</artifactId>
+      <type>ear</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework</groupId>
       <artifactId>bw-xml-exchangews</artifactId>
     </dependency>
 
@@ -600,10 +630,118 @@
 
     <!-- Third-party dependencies -->
 
+    <dependency>
+      <groupId>org.bedework</groupId>
+      <artifactId>hibernate-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jasig.cas.client</groupId>
+      <artifactId>cas-client-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.ldap</groupId>
+      <artifactId>spring-ldap-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-oxm</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-acl</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-ldap</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-taglibs</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.webflow</groupId>
+      <artifactId>spring-binding</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.webflow</groupId>
+      <artifactId>spring-webflow</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.ws</groupId>
+      <artifactId>spring-ws-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.ws</groupId>
+      <artifactId>spring-ws-security</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.ws</groupId>
+      <artifactId>spring-xml</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
     <plugins>
+      <!-- Create directory or deployments fail below -->
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+
+        <executions>
+          <execution>
+            <phase>initialize</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <mkdir dir="${bw-ear-deployment-location}" />
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -625,6 +763,94 @@
                 <argument>-Dorg.bedework.modules.parent.path=${modulesDir}</argument>
                 <argument>clean</argument>
                 <argument>package</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <!-- Build calendar wars and ears -->
+
+          <execution>
+            <id>build-deployable-xml-modules</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+
+            <configuration>
+              <executable>mvn</executable>
+              <workingDirectory>${bw-project-xml}</workingDirectory>
+              <arguments>
+                <argument>-Pbedework-dev</argument>
+                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
+                <argument>clean</argument>
+                <argument>install</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>build-deployable-calendar-modules</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+
+            <configuration>
+              <executable>mvn</executable>
+              <workingDirectory>${bw-project-deploy}</workingDirectory>
+              <arguments>
+                <argument>-Pbedework-dev</argument>
+                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
+                <argument>clean</argument>
+                <argument>install</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <!-- Build calendar xsl war -->
+          <execution>
+            <id>build-deployable-calendar-xsl</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+
+            <configuration>
+              <executable>mvn</executable>
+              <workingDirectory>${bw-project-calendar-xsl}</workingDirectory>
+              <arguments>
+                <argument>-Pbedework-dev</argument>
+                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
+                <argument>clean</argument>
+                <argument>install</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <!-- Build timezone wars and ears -->
+          <execution>
+            <id>build-deployable-timezone-modules</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+
+            <configuration>
+              <executable>mvn</executable>
+              <workingDirectory>${bw-project-timezones}</workingDirectory>
+              <arguments>
+                <argument>-Pbedework-dev</argument>
+                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
+                <argument>clean</argument>
+                <argument>install</argument>
               </arguments>
             </configuration>
           </execution>
@@ -693,6 +919,88 @@
             </configuration>
           </execution>
 
+          <!-- Deploy each ear to the correct resource directory -->
+
+          <execution>
+            <id>copy-xml-ear</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}/packages/deploy.xml/pm/wildfly/resources/ear/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${bw-ear-deployment-location}</directory>
+                  <includes>
+                    <include>bw-xml*/**</include>
+                  </includes>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-calendar-ro-ear</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}/packages/deploy.calendar-ro/pm/wildfly/resources/ear/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${bw-ear-deployment-location}</directory>
+                  <includes>
+                    <include>bw-calro*/**</include>
+                  </includes>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-calendar-xsl-war</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}/packages/deploy.calendar-xsl/pm/wildfly/resources/war/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${bw-ear-deployment-location}</directory>
+                  <includes>
+                    <include>bw-calendar-xsl*/**</include>
+                  </includes>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-timezones-ear</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}/packages/deploy.timezones/pm/wildfly/resources/ear/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${bw-ear-deployment-location}</directory>
+                  <includes>
+                    <include>bw-timezone*/**</include>
+                  </includes>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
           <execution>
             <id>copy-feature-pack-module-resources</id>
             <phase>process-resources</phase>
@@ -722,7 +1030,7 @@
             <goals>
               <goal>build-feature-pack</goal>
             </goals>
-            <phase>compile</phase>
+            <phase>package</phase>
             <configuration>
               <fork-embedded>false</fork-embedded>
               <resourcesDir>${resourcesDir}</resourcesDir>

@@ -3,5 +3,6 @@
 <package-spec xmlns="urn:jboss:galleon:package:2.0" name="deploy.calendar-ro">
     <dependencies>
         <package name="deploy.timezones"/>
+        <package name="deploy.calendar-xsl"/>
     </dependencies>
 </package-spec>

@@ -4,6 +4,11 @@
     <dependencies>
         <layer name="bw-common"/>
     </dependencies>
+
+    <packages>
+        <package name="deploy.xml"/>
+    </packages>
+
     <feature spec="subsystem.logging.periodic-rotating-file-handler">
         <param name="periodic-rotating-file-handler" value="TZREFRESH"/>
         <param name="named-formatter" value="PATTERN"/>
