@@ -31,11 +31,11 @@
     <feature spec="subsystem.elytron.ldap-realm">
         <param name="ldap-realm" value="bedeworkRealm"/>
         <param name="dir-context" value="bedeworkLdapConnection"/>
-        <param name="identity-mapping" value="{rdn-identifier=uid, search-base-dn=&quot;ou=accounts,dc=bedework,dc=org&quot;}"/>
-        <param name="attribute-mapping" value="{from=uid, to=Roles, filter=&quot;(uniqueMember={1})&quot;,filter-base-dn=&quot;ou=groups,dc=bedework,dc=org&quot;}"/>
+        <param name="identity-mapping" value="{rdn-identifier=uid, search-base-dn=&quot;ou=accounts,dc=bedework,dc=org&quot;,
+            attribute-mapping=[{from=uid, to=Roles, filter=&quot;(uniqueMember={1})&quot;,filter-base-dn=&quot;ou=groups,dc=bedework,dc=org&quot;}],user-password-mapper={from=&quot;userPassword&quot;}}"/>
     </feature>
 
-    <feature spec="subsystem.elytron.mappers.simple-role-decoder">
+    <feature spec="subsystem.elytron.simple-role-decoder">
         <param name="simple-role-decoder" value="from-roles-attribute"/>
         <param name="attribute" value="Roles"/>
     </feature>
@@ -58,7 +58,7 @@
     <feature spec="subsystem.elytron.dir-context">
         <param name="dir-context" value="bedeworkLdapConnection"/>
         <param name="url" value="ldap://localhost:10389"/>
-        <param name="principal" value="uid=admin,ou=system"/>
+        <param name="principal" value="&quot;uid=admin,ou=system&quot;"/>
         <param name="credential-reference" value="{clear-text=&quot;secret&quot;}"/>
     </feature>
 

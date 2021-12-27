@@ -8,8 +8,6 @@
     <feature spec="subsystem.datasources">
         <feature spec="subsystem.datasources.data-source">
             <param name="data-source"           value="CardDS"/>
-            <param name="pool-name"             value="CardDS"/>
-            <param name="enabled"               value="true"/>
             <param name="use-java-context"      value="true"/>
             <param name="jndi-name"             value="java:/CardDS"/>
             <param name="connection-url"        value="jdbc:h2:tcp://localhost/CardDb"/>

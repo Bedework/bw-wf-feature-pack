@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+
+<package-spec xmlns="urn:jboss:galleon:package:2.0" name="config.calendar-rw">
+  <dependencies>
+    <package name="config.calendar-ro"/>
+  </dependencies>
+</package-spec>

@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<package-spec xmlns="urn:jboss:galleon:package:2.0" name="deploy.calendar-rw">
+    <dependencies>
+        <package name="deploy.timezones"/>
+        <package name="deploy.calendar-xsl"/>
+    </dependencies>
+</package-spec>

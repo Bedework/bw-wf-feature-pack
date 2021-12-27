@@ -949,7 +949,6 @@
                     <include>layers/**</include>
                     <include>packages/**</include>
                   </includes>
-                  <filtering>true</filtering>
                 </resource>
               </resources>
             </configuration>
@@ -991,7 +990,25 @@
                   <includes>
                     <include>bw-calro*/**</include>
                   </includes>
-                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-calendar-rw-ear</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}/packages/deploy.calendar-rw/pm/wildfly/resources/ear/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${bw-ear-deployment-location}</directory>
+                  <includes>
+                    <include>bw-cal-*/**</include>
+                  </includes>
                 </resource>
               </resources>
             </configuration>
