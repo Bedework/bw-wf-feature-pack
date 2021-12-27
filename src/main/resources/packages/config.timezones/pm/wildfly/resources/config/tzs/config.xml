@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <bwtz-confinfo xmlns="http://bedework.org/ns/" type="org.bedework.timezones.common.TzConfig">
-  <dbPath>${org.bedework.data.dir}tzsvr/dbData/</dbPath>
+  <dbPath>${org.bedework.data.dir}tzsvr/dbData</dbPath>
   <dtstamp>2020-10-09T22:08:00Z</dtstamp>
   <name>config</name>
   <primaryServer>true</primaryServer>

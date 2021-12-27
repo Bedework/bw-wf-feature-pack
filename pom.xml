@@ -1011,7 +1011,6 @@
                   <includes>
                     <include>bw-calendar-xsl*/**</include>
                   </includes>
-                  <filtering>true</filtering>
                 </resource>
               </resources>
             </configuration>
