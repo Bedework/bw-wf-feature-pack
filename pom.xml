@@ -410,6 +410,11 @@
 
     <dependency>
       <groupId>org.bedework.bw-tzsvr</groupId>
+      <artifactId>bw-timezone-server-data</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.bw-tzsvr</groupId>
       <artifactId>bw-timezone-server-tzconvert</artifactId>
     </dependency>
 
@@ -631,13 +636,44 @@
     <!-- Third-party dependencies -->
 
     <dependency>
+      <groupId>org.jasig.cas.client</groupId>
+      <artifactId>cas-client-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.bedework</groupId>
       <artifactId>hibernate-core</artifactId>
     </dependency>
 
     <dependency>
-      <groupId>org.jasig.cas.client</groupId>
-      <artifactId>cas-client-core</artifactId>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-ehcache</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-core</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>jaxen</groupId>
+      <artifactId>jaxen</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jolokia</groupId>
+      <artifactId>jolokia-client-java</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jolokia</groupId>
+      <artifactId>jolokia-core</artifactId>
     </dependency>
 
     <dependency>
@@ -996,6 +1032,22 @@
                     <include>bw-timezone*/**</include>
                   </includes>
                   <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-timezones-data</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}/packages/data.timezones/pm/wildfly/resources/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${bw-project-timezones}bw-timezone-server-data/src/main/resources</directory>
                 </resource>
               </resources>
             </configuration>

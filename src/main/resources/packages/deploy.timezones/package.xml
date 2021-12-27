@@ -1,4 +1,8 @@
 <?xml version="1.0" ?>
 
 <package-spec xmlns="urn:jboss:galleon:package:2.0" name="deploy.timezones">
+  <dependencies>
+    <package name="config.timezones"/>
+    <package name="data.timezones"/>
+  </dependencies>
 </package-spec>
