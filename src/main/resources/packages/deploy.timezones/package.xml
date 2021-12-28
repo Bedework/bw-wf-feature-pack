@@ -4,5 +4,6 @@
   <dependencies>
     <package name="config.timezones"/>
     <package name="data.timezones"/>
+    <package name="org.bedework.timezone.server.ear"/>
   </dependencies>
 </package-spec>

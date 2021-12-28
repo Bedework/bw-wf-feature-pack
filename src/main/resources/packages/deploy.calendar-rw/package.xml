@@ -4,5 +4,6 @@
     <dependencies>
         <package name="deploy.timezones"/>
         <package name="deploy.calendar-xsl"/>
+        <package name="org.bedework.calendar.rw-ear"/>
     </dependencies>
 </package-spec>
