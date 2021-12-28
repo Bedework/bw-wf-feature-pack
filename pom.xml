@@ -839,6 +839,7 @@
               <arguments>
                 <argument>-Pbedework-dev</argument>
                 <argument>-Dbw-wildfly-feature-pack-build=true</argument>
+                <argument>-Dbw-bedework.project.directory=${bw-project-bedework}</argument>
                 <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
                 <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
                 <argument>clean</argument>

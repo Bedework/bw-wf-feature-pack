@@ -10,6 +10,7 @@
 
     <packages>
         <package name="modules.all"/>
+        <package name="deploy.bedework-content"/>
     </packages>
 
     <!-- Logging config -->
@@ -401,23 +402,13 @@
             <param name="allow-unescaped-characters-in-url" value="true"/>
         </feature>
 
-        <!--
-        <feature spec="subsystem.undertow.server.configuration.handler.file">
-            <param name="file" value="bedework-content"/>
-            <param name="path" value="${jboss.home.dir}/bedework-content"/>
-            <param name="directory-listing" value="true"/>
-        </feature>
-        -->
-
         <feature spec="subsystem.undertow.server.host">
             <param name="host" value="default-host" />
             <param name="alias" value="[localhost]"/>
-            <!--
-            <feature spec="subsystem.undertow.server.host.filter-ref">
-                <param name="filter-ref" value="server-header"/>
-            </feature>
-            <feature spec="subsystem.undertow.server.host.filter-ref">
-                <param name="filter-ref" value="x-powered-by-header"/>
+
+            <feature spec="subsystem.undertow.server.host.location">
+                <param name="location" value="/"/>
+                <param name="handler" value="bedework-content"/>
             </feature>
 
             <feature spec="subsystem.undertow.server.host.location">
@@ -425,14 +416,10 @@
                 <param name="handler" value="bedework-content"/>
             </feature>
 
-            <feature spec="subsystem.undertow.server.host.filter-ref">
-                <param name="filter-ref" value="server-header"/>
+            <feature spec="subsystem.undertow.server.host.setting.access-log">
+                <param name="pattern"
+                       value="%h %l %u [%t] &quot;%r&quot; %s %b &quot;%{i,Referer}&quot; &quot;%{i,User-Agent}&quot;"/>
             </feature>
-
-            <feature spec="subsystem.undertow.server.host.filter-ref">
-                <param name="filter-ref" value="x-powered-by-header"/>
-            </feature>
-            -->
 
             <feature spec="subsystem.undertow.server.host.filter-ref">
                 <param name="filter-ref" value="404-handler"/>
@@ -472,13 +459,9 @@
         </feature>
     </feature>
 
-    <!--
-    <feature spec="subsystem.undertow.setting.handlers">
-        <feature spec="subsystem.undertow.handlers.file">
-            <param name="file" value="bedework-content"/>
-            <param name="path" value="${jboss.home.dir}/bedework-content"/>
-            <param name="directory-listing" value="true"/>
-        </feature>
+    <feature spec="subsystem.undertow.configuration.handler.file">
+        <param name="file" value="bedework-content"/>
+        <param name="path" value="${jboss.home.dir}/bedework-content"/>
+        <param name="directory-listing" value="true"/>
     </feature>
-    -->
 </layer-spec>
