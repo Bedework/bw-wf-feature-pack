@@ -225,6 +225,7 @@
     <orderEntry type="module" module-name="bw-synch-common" />
     <orderEntry type="module" module-name="bw-synch-web" />
     <orderEntry type="module" module-name="bw-timezone-server-common" />
+    <orderEntry type="module" module-name="bw-timezone-server-data" />
     <orderEntry type="module" module-name="bw-timezone-server-tzconvert" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.17.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.logging.log4j:log4j-core:2.17.0" level="project" />
