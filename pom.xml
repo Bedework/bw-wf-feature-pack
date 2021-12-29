@@ -297,6 +297,13 @@
       <artifactId>bw-category-web</artifactId>
     </dependency>
 
+    <!-- ============ bw-cli ============ -->
+
+    <dependency>
+      <groupId>org.bedework</groupId>
+      <artifactId>bw-cli</artifactId>
+    </dependency>
+
     <!-- ============ bw-cliutil ============ -->
 
     <dependency>
@@ -674,6 +681,11 @@
     <dependency>
       <groupId>org.jolokia</groupId>
       <artifactId>jolokia-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jolokia</groupId>
+      <artifactId>jolokia-jsr160</artifactId>
     </dependency>
 
     <dependency>

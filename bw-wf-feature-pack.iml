@@ -187,6 +187,7 @@
     <orderEntry type="library" name="Maven: org.bedework:bw-category-common:4.0.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.bedework:bw-category-impl:4.0.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.bedework:bw-category-service:4.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="module" module-name="bw-cli" />
     <orderEntry type="module" module-name="bw-util-cli" />
     <orderEntry type="module" module-name="bw-util-jolokia" />
     <orderEntry type="module" module-name="bw-event-registration-common" />
