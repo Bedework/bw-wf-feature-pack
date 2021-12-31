@@ -6,6 +6,13 @@
         <layer name="h2-driver"/>
     </dependencies>
 
+    <packages>
+        <package name="config.synch-h2"/>
+        <package name="data.synch-h2"/>
+        <package name="deploy.synch"/>
+        <package name="deploy.xml"/>
+    </packages>
+
     <feature spec="subsystem.datasources">
         <feature spec="subsystem.datasources.data-source">
             <param name="data-source"           value="SynchDS"/>
