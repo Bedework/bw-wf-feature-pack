@@ -4,4 +4,7 @@
     <copy-path src="resources/bedework-content"
                relative-to="resources"
                target="bedework-content" />
+    <copy-path src="resources/"
+               relative-to="resources"
+               target="standalone/log" />
 </tasks>

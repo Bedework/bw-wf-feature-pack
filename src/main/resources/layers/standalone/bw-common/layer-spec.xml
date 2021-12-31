@@ -180,6 +180,11 @@
     </feature>
 
     <feature spec="subsystem.logging.logger">
+        <param name="logger" value="org.apache.struts.util.PropertyMessageResources"/>
+        <param name="level" value="ERROR"/>
+    </feature>
+
+    <feature spec="subsystem.logging.logger">
         <param name="logger" value="org.apache.commons.digester.Digester"/>
         <param name="level" value="INFO"/>
     </feature>
@@ -281,10 +286,14 @@
 
             <param name="persistence-enabled" value="true"/>
             <param name="elytron-domain" value="ApplicationDomain"/>
-            <!--
 
-                    <address-setting name="#" dead-letter-address="jms.queue.DLQ" expiry-address="jms.queue.ExpiryQueue" max-size-bytes="10485760" page-size-bytes="2097152" message-counter-history-day-limit="10"/>
-                    -->
+            <feature spec="subsystem.messaging-activemq.server.address-setting">
+                <param name="address-setting" value="#"/>
+                <param name="dead-letter-address" value="jms.queue.DLQ"/>
+                <param name="expiry-address" value="jms.queue.ExpiryQueue"/>
+                <param name="page-size-bytes" value="2097152"/>
+                <param name="message-counter-history-day-limit" value="10"/>
+            </feature>
 
             <feature spec="subsystem.messaging-activemq.server.in-vm-connector">
                 <param name="in-vm-connector" value="in-vm"/>
