@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
+            name="bw-all-pg">
+    <dependencies>
+        <layer name="bw-calendar-pg"/>
+        <layer name="bw-synch-pg"/>
+    </dependencies>
+</layer-spec>

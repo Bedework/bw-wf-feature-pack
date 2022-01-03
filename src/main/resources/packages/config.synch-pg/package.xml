@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 
-<package-spec xmlns="urn:jboss:galleon:package:2.0" name="config.synch-h2">
+<package-spec xmlns="urn:jboss:galleon:package:2.0" name="config.synch-pg">
   <dependencies>
     <package name="config.synch"/>
   </dependencies>
