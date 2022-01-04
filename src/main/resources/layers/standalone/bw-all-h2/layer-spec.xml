@@ -4,6 +4,9 @@
     <dependencies>
         <layer name="bw-calendar-h2"/>
         <layer name="bw-carddav-h2"/>
+        <layer name="bw-eventreg-h2"/>
+        <layer name="bw-notify-h2"/>
+        <layer name="bw-selfreg-h2"/>
         <layer name="bw-synch-h2"/>
     </dependencies>
 </layer-spec>

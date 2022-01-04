@@ -35,6 +35,12 @@
 
     <bw-project-deploy>${project.basedir}/../bw-deploy/</bw-project-deploy>
 
+    <bw-project-eventreg>${project.basedir}/../bw-event-registration/</bw-project-eventreg>
+
+    <bw-project-notifier>${project.basedir}/../bw-notifier/</bw-project-notifier>
+
+    <bw-project-selfreg>${project.basedir}/../bw-self-registration/</bw-project-selfreg>
+
     <bw-project-synch>${project.basedir}/../bw-synch/</bw-project-synch>
 
     <bw-project-timezones>${project.basedir}/../bw-timezone-server/</bw-project-timezones>
@@ -913,6 +919,72 @@
             </configuration>
           </execution>
 
+          <!-- Build eventreg wars and ears -->
+          <execution>
+            <id>build-deployable-eventreg-modules</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+
+            <configuration>
+              <executable>mvn</executable>
+              <workingDirectory>${bw-project-eventreg}</workingDirectory>
+              <arguments>
+                <argument>-Pbedework-dev</argument>
+                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
+                <argument>clean</argument>
+                <argument>install</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <!-- Build notifier wars and ears -->
+          <execution>
+            <id>build-deployable-notifier-modules</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+
+            <configuration>
+              <executable>mvn</executable>
+              <workingDirectory>${bw-project-notifier}</workingDirectory>
+              <arguments>
+                <argument>-Pbedework-dev</argument>
+                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
+                <argument>clean</argument>
+                <argument>install</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <!-- Build selfreg wars and ears -->
+          <execution>
+            <id>build-deployable-selfreg-modules</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+
+            <configuration>
+              <executable>mvn</executable>
+              <workingDirectory>${bw-project-selfreg}</workingDirectory>
+              <arguments>
+                <argument>-Pbedework-dev</argument>
+                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
+                <argument>clean</argument>
+                <argument>install</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
           <!-- Build synch wars and ears -->
           <execution>
             <id>build-deployable-synch-modules</id>
@@ -1112,6 +1184,63 @@
                   <directory>${bw-ear-deployment-location}</directory>
                   <includes>
                     <include>bw-carddav*/**</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-eventreg-ear</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}/packages/deploy.eventreg/pm/wildfly/resources/ear/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${bw-ear-deployment-location}</directory>
+                  <includes>
+                    <include>bw-event-reg*/**</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-notifier-ear</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}/packages/deploy.notify/pm/wildfly/resources/ear/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${bw-ear-deployment-location}</directory>
+                  <includes>
+                    <include>bw-notifier*/**</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-selfreg-ear</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}/packages/deploy.selfreg/pm/wildfly/resources/ear/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${bw-ear-deployment-location}</directory>
+                  <includes>
+                    <include>bw-self-reg*/**</include>
                   </includes>
                 </resource>
               </resources>

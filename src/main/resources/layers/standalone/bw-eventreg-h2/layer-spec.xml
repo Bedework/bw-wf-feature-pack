@@ -6,6 +6,12 @@
         <layer name="h2-driver"/>
     </dependencies>
 
+    <packages>
+        <package name="config.eventreg-h2"/>
+        <package name="deploy.eventreg"/>
+        <package name="deploy.xml"/>
+    </packages>
+
     <feature spec="subsystem.datasources">
         <feature spec="subsystem.datasources.data-source">
             <param name="data-source"           value="EventregDS"/>
