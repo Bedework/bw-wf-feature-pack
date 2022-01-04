@@ -31,6 +31,8 @@
 
     <bw-project-calendar-xsl>${project.basedir}/../bw-calendar-xsl/</bw-project-calendar-xsl>
 
+    <bw-project-carddav>${project.basedir}/../bw-carddav/</bw-project-carddav>
+
     <bw-project-deploy>${project.basedir}/../bw-deploy/</bw-project-deploy>
 
     <bw-project-synch>${project.basedir}/../bw-synch/</bw-project-synch>
@@ -889,6 +891,28 @@
             </configuration>
           </execution>
 
+          <!-- Build carddav wars and ears -->
+          <execution>
+            <id>build-deployable-carddav-modules</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+
+            <configuration>
+              <executable>mvn</executable>
+              <workingDirectory>${bw-project-carddav}</workingDirectory>
+              <arguments>
+                <argument>-Pbedework-dev</argument>
+                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
+                <argument>clean</argument>
+                <argument>install</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
           <!-- Build synch wars and ears -->
           <execution>
             <id>build-deployable-synch-modules</id>
@@ -1069,6 +1093,25 @@
                   <directory>${bw-ear-deployment-location}</directory>
                   <includes>
                     <include>bw-calendar-xsl*/**</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-carddav-ear</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}/packages/deploy.carddav/pm/wildfly/resources/ear/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${bw-ear-deployment-location}</directory>
+                  <includes>
+                    <include>bw-carddav*/**</include>
                   </includes>
                 </resource>
               </resources>

@@ -3,6 +3,7 @@
             name="bw-all-pg">
     <dependencies>
         <layer name="bw-calendar-pg"/>
+        <layer name="bw-carddav-pg"/>
         <layer name="bw-synch-pg"/>
     </dependencies>
 </layer-spec>
