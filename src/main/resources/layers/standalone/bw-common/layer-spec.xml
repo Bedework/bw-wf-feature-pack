@@ -5,10 +5,10 @@
         <layer name="core-server"/>
         <layer name="web-server"/>
         <layer name="jms-activemq"/>
-        <layer name="webservices"/>
     </dependencies>
 
     <packages>
+        <package name="org.jboss.ws.saaj-impl"/>
         <package name="deploy.bedework-content"/>
         <package name="deploy.cli"/>
         <package name="deploy.jolokia.war"/>
