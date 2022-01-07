@@ -1,32 +1,11 @@
 <?xml version="1.0" ?>
 <layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
-            name="bw-rw">
-    <!-- A bedework system with updates to data -->
+            name="bw-auth-ldap">
+    <!-- A sample ldap configuration -->
 
     <dependencies>
-        <layer name="datasources-web-server"/>
         <layer name="bw-common"/>
     </dependencies>
-
-    <!-- Logging config -->
-
-    <feature spec="subsystem.logging.periodic-rotating-file-handler">
-        <param name="periodic-rotating-file-handler" value="CHANGES"/>
-        <param name="named-formatter" value="PATTERN"/>
-        <param name="file" value="{relative-to=jboss.server.log.dir,path=bwchange.log}"/>
-        <param name="suffix" value=".yyyy-MM-dd"/>
-        <param name="append" value="true"/>
-        <param name="autoflush" value="true"/>
-    </feature>
-
-    <feature spec="subsystem.logging.logger">
-        <param name="logger" value="org.bedework.chgnote"/>
-        <param name="level" value="INFO"/>
-        <param name="use-parent-handlers" value="false"/>
-        <param name="handlers" value="[CHANGES]"/>
-    </feature>
-
-    <!-- Set up with local ldap config: this should be a layer? -->
 
     <feature spec="subsystem.elytron.ldap-realm">
         <param name="ldap-realm" value="bedeworkRealm"/>
@@ -57,7 +36,7 @@
 
     <feature spec="subsystem.elytron.dir-context">
         <param name="dir-context" value="bedeworkLdapConnection"/>
-        <param name="url" value="ldap://localhost:10389"/>
+        <param name="url" value="ldap://localhost:389"/>
         <param name="principal" value="&quot;uid=admin,ou=system&quot;"/>
         <param name="credential-reference" value="{clear-text=&quot;secret&quot;}"/>
     </feature>

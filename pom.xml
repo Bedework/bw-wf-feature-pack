@@ -792,6 +792,7 @@
 
         <executions>
           <execution>
+            <id>Make ear deployment location</id>
             <phase>initialize</phase>
             <goals>
               <goal>run</goal>
@@ -802,6 +803,23 @@
               </target>
             </configuration>
           </execution>
+
+          <!--
+          <execution>
+            <id>Unzip apacheds</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <mkdir dir="${resourcesDir}/packages/deploy.apacheds/pm/wildfly/resources/apacheds/" />
+                <unzip src="${bw-project-bedework}/build/quickstart/data/apacheds.zip"
+                       dest="${resourcesDir}/packages/deploy.apacheds/pm/wildfly/resources/apacheds/"/>
+              </target>
+            </configuration>
+          </execution>
+          -->
         </executions>
       </plugin>
 

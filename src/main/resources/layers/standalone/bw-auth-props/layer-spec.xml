@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
+            name="bw-auth-ldap">
+    <!-- A sample ldap configuration -->
+
+    <dependencies>
+        <layer name="bw-common"/>
+    </dependencies>
+
+    <packages>
+        <package name="deploy.authprops" />
+    </packages>
+
+    <feature spec="subsystem.elytron.properties-realm">
+        <param name="properties-realm" value="bedeworkRealm"/>
+        <param name="users-properties" value="{path=application-users.properties,relative-to=jboss.server.config.dir,digest-realm-name=bedeworkRealm}"/>
+        <param name="groups-properties" value="{path=application-roles.properties,relative-to=jboss.server.config.dir}"/>
+    </feature>
+
+    <feature spec="subsystem.elytron.security-domain">
+        <param name="security-domain" value="bedeworkSD"/>
+        <param name="default-realm" value="bedeworkRealm"/>
+        <param name="permission-mapper" value="default-permission-mapper"/>
+        <param name="realms" value="[{realm=bedeworkRealm,role-decoder=groups-to-roles}]"/>
+    </feature>
+
+    <feature spec="subsystem.elytron.http-authentication-factory">
+        <param name="http-authentication-factory" value="bedeworkAuth"/>
+        <param name="http-server-mechanism-factory" value="global"/>
+        <param name="security-domain" value="bedeworkSD"/>
+        <param name="mechanism-configurations" value="[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=bedework}]},{mechanism-name=FORM}]"/>
+    </feature>
+
+    <feature spec="subsystem.undertow">
+        <feature spec="subsystem.undertow.application-security-domain">
+            <param name="application-security-domain" value="bedework" />
+            <param name="http-authentication-factory" value="bedeworkAuth"/>
+        </feature>
+    </feature>
+</layer-spec>

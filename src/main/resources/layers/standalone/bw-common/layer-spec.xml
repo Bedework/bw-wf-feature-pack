@@ -3,6 +3,7 @@
             name="bw-common">
     <dependencies>
         <layer name="core-server"/>
+        <layer name="elytron"/>
         <layer name="web-server"/>
         <layer name="jms-activemq"/>
     </dependencies>
@@ -428,7 +429,7 @@
 
             <feature spec="subsystem.undertow.server.host.setting.access-log">
                 <param name="pattern"
-                       value="%h %l %u [%t] &quot;%r&quot; %s %b &quot;%{i,Referer}&quot; &quot;%{i,User-Agent}&quot;"/>
+                       value="&quot;%h %l %u [%t] \&quot;%r\&quot; %s %b \&quot;%{i,Referer};\&quot; \&quot;%{i,User-Agent}\&quot;&quot;"/>
             </feature>
 
             <feature spec="subsystem.undertow.server.host.filter-ref">
@@ -473,5 +474,18 @@
         <param name="file" value="bedework-content"/>
         <param name="path" value="${jboss.home.dir}/bedework-content"/>
         <param name="directory-listing" value="true"/>
+    </feature>
+
+    <!-- BASIC auth for jolokia -->
+    <feature spec="subsystem.elytron.http-authentication-factory">
+        <param name="http-authentication-factory" value="management-http-authentication"/>
+        <param name="mechanism-configurations" value="[{mechanism-name=DIGEST,mechanism-realm-configurations=[{realm-name=ManagementRealm}]},{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ManagementRealm}]}]"/>
+    </feature>
+
+    <feature spec="subsystem.undertow">
+        <feature spec="subsystem.undertow.application-security-domain">
+            <param name="application-security-domain" value="jolokia" />
+            <param name="http-authentication-factory" value="management-http-authentication"/>
+        </feature>
     </feature>
 </layer-spec>

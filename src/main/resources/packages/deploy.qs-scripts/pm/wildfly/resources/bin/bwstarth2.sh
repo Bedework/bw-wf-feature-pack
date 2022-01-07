@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+echo "About to start h2 process"
 
 DIRNAME=`dirname "$0"`
 GREP="grep"
@@ -69,13 +71,24 @@ fi
 # Override ibm JRE behavior
 JAVA_OPTS="$JAVA_OPTS -Dcom.ibm.jsse2.overrideDefaultTLS=true"
 
-# Sample JPDA settings for remote socket debugging
-#JAVA_OPTS="$JAVA_OPTS -agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n"
+JBOSS_CONFIG="standalone"
+JBOSS_SERVER_DIR="$JBOSS_HOME/$JBOSS_CONFIG"
+JBOSS_DATA_DIR="$JBOSS_SERVER_DIR/data"
 
-LOG_CONF=`echo $JAVA_OPTS | grep "logging.configuration"`
-if [ "x$LOG_CONF" = "x" ]; then
-    exec "$JAVA" $JAVA_OPTS -Dlogging.configuration=file:"$JBOSS_HOME"/bin/jboss-cli-logging.properties -jar "$JBOSS_HOME"/jboss-modules.jar -mp "${JBOSS_MODULEPATH}" org.bedework.cli.cli-app "$@"
-else
-    echo "logging.configuration already set in JAVA_OPTS"
-    exec "$JAVA" $JAVA_OPTS -jar "$JBOSS_HOME"/jboss-modules.jar -mp "${JBOSS_MODULEPATH}" org.bedework.cli.cli-app "$@"
+TMP_DIR="$JBOSS_SERVER_DIR/tmp"
+PIDFILE="$TMP_DIR/h2.pid"
+
+if [ ! -d "$TMP_DIR" ]; then
+  mkdir -p $TMP_DIR
 fi
+
+if [ -f "$PIDFILE" ]; then
+  printf "Warning: pidfile $PIDFILE exists - trying to shut down running process"
+  $DIRNAME/bwstoph2
+fi
+
+rm $PIDFILE
+
+BW_DATA_DIR=$JBOSS_DATA_DIR/bedework
+
+exec "$JAVA" $JAVA_OPTS -jar "$JBOSS_HOME"/jboss-modules.jar -mp "${JBOSS_MODULEPATH}" com.h2database.h2/org.h2.tools.Server -tcp -web -baseDir $BW_DATA_DIR/h2 & echo $! >>$PIDFILE "$@"

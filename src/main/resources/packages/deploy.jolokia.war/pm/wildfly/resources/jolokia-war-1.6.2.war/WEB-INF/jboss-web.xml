@@ -3,7 +3,7 @@
       
     <!-- Virtual host -->
 
-    <security-domain>java:/jaas/other</security-domain>
+    <security-domain>java:/jaas/jolokia</security-domain>
 
     <context-root>/jolokia</context-root>
     

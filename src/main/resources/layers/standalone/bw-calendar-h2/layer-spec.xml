@@ -3,7 +3,7 @@
             name="bw-calendar-h2">
     <dependencies>
         <layer name="bw-tzserver"/>
-        <layer name="bw-rw"/>
+        <layer name="bw-calendar-rw"/>
         <layer name="h2-driver"/>
     </dependencies>
 

@@ -3,7 +3,7 @@
             name="bw-calendar-pg">
     <dependencies>
         <layer name="bw-tzserver"/>
-        <layer name="bw-rw"/>
+        <layer name="bw-calendar-rw"/>
         <layer name="postgresql-driver"/>
     </dependencies>
 
