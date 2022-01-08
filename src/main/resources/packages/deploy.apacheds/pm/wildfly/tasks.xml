@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+
+<tasks xmlns="urn:wildfly:wildfly-feature-pack-tasks:3.0">
+    <copy-artifact artifact="org.bedework.deploy:bw-apacheds:::zip"
+               to-location=""
+                   extract="true"/>
+    <copy-artifact artifact="org.apache.directory.server:apacheds-service"
+               to-location="apacheds/lib/"/>
+</tasks>

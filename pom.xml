@@ -107,6 +107,14 @@
       <artifactId>bw-access</artifactId>
     </dependency>
 
+    <!-- ================= bw-apacheds ================= -->
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-apacheds</artifactId>
+      <type>zip</type>
+    </dependency>
+
     <!-- ================= bw-caldav ================= -->
 
     <dependency>
@@ -643,6 +651,11 @@
     <dependency>
       <groupId>org.bedework</groupId>
       <artifactId>apache-jdkim-library</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.directory.server</groupId>
+      <artifactId>apacheds-service</artifactId>
     </dependency>
 
     <dependency>

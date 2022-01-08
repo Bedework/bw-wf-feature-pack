@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
+            name="bw-auth-apacheds">
+    <!-- A sample ldap configuration -->
+
+    <dependencies>
+        <layer name="bw-auth-ldap"/>
+    </dependencies>
+
+    <packages>
+        <package name="deploy.apacheds" />
+    </packages>
+</layer-spec>

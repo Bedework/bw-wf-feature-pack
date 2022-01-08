@@ -2,7 +2,7 @@
 <layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
             name="bw-demo-h2">
     <dependencies>
-        <layer name="bw-auth-props"/>
+        <layer name="bw-auth-apacheds"/>
         <layer name="bw-calendar-h2"/>
         <layer name="bw-carddav-h2"/>
         <layer name="bw-eventreg-h2"/>
