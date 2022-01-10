@@ -1,8 +1,12 @@
 <?xml version="1.0" ?>
 
 <tasks xmlns="urn:wildfly:wildfly-feature-pack-tasks:3.0">
-    <copy-path src="resources/"
+    <copy-path src="resources/resources"
                relative-to="resources"
-               target="bedework-content/"
+               target="bedework-content/resources"
                replace-props="false" />
+    <copy-path src="resources/index.html"
+               relative-to="resources"
+               target="bedework-content/index.html"
+               replace-props="true" />
 </tasks>
