@@ -853,6 +853,7 @@
               <workingDirectory>${bw-wfmodules-location}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
+                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
                 <argument>-Dorg.bedework.thin.modules=true</argument>
                 <argument>-Dorg.bedework.modules.parent.path=${modulesDir}</argument>
                 <argument>clean</argument>
