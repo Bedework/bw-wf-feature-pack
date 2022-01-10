@@ -7,7 +7,7 @@
   <indexPublic>true</indexPublic>
   <indexUsers>true</indexUsers>
   <indexerConfig>${org.bedework.config.dir}/elasticsearch/</indexerConfig>
-  <indexerURL>localhost:9200</indexerURL>
+  <indexerURL>${com.bedework.esurls}</indexerURL>
   <indexerUser>bedework</indexerUser>
   <indexerPw>bedework</indexerPw>
   <maxEntityThreads>2</maxEntityThreads>

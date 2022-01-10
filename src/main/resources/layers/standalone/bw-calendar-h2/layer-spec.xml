@@ -11,6 +11,7 @@
         <package name="config.calendar-h2"/>
         <package name="data.calendar-h2"/>
         <package name="deploy.calendar-rw"/>
+        <package name="deploy.h2-scripts"/>
         <package name="deploy.xml"/>
     </packages>
 

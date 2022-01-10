@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
+            name="bw-qs-bedework">
+    <dependencies>
+        <layer name="bw-common"/>
+    </dependencies>
+
+    <packages>
+        <package name="deploy.qs-bedework"/>
+    </packages>
+</layer-spec>

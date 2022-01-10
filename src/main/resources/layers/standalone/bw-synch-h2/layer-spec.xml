@@ -10,6 +10,7 @@
         <package name="config.synch-h2"/>
         <package name="data.synch-h2"/>
         <package name="deploy.synch"/>
+        <package name="deploy.h2-scripts"/>
         <package name="deploy.xml"/>
     </packages>
 

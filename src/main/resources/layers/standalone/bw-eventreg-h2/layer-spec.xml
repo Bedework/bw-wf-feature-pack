@@ -9,6 +9,7 @@
     <packages>
         <package name="config.eventreg-h2"/>
         <package name="deploy.eventreg"/>
+        <package name="deploy.h2-scripts"/>
         <package name="deploy.xml"/>
     </packages>
 

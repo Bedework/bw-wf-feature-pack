@@ -1203,6 +1203,25 @@
           </execution>
 
           <execution>
+            <id>copy-bedework-war</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}/packages/deploy.qs-bedework/pm/wildfly/resources/war/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${bw-ear-deployment-location}</directory>
+                  <includes>
+                    <include>bedework*/**</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
             <id>copy-carddav-ear</id>
             <phase>process-resources</phase>
             <goals>

@@ -7,6 +7,7 @@
         <layer name="bw-carddav-pg"/>
         <layer name="bw-eventreg-pg"/>
         <layer name="bw-notify-pg"/>
+        <layer name="bw-qs-bedework"/>
         <layer name="bw-selfreg-pg"/>
         <layer name="bw-synch-pg"/>
     </dependencies>

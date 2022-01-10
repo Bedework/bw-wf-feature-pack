@@ -12,6 +12,7 @@
         <package name="org.jboss.ws.saaj-impl"/>
         <package name="deploy.bedework-content"/>
         <package name="deploy.cli"/>
+        <package name="deploy.scripts"/>
         <package name="deploy.jolokia.war"/>
     </packages>
 

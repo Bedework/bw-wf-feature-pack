@@ -6,4 +6,7 @@
                    extract="true"/>
     <copy-artifact artifact="org.apache.directory.server:apacheds-service"
                to-location="apacheds/lib/"/>
+    <copy-path src="resources/bin/"
+               relative-to="resources"
+               target="bin/"/>
 </tasks>
