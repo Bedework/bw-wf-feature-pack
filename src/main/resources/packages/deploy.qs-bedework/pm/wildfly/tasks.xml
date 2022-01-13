@@ -9,4 +9,8 @@
                relative-to="resources"
                target="bedework-content/index.html"
                replace-props="true" />
+    <copy-path src="resources/resources/headBg2.jpg"
+               relative-to="resources"
+               target="bedework-content/headBg2.jpg"
+               replace-props="false" />
 </tasks>

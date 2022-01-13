@@ -1,17 +1,26 @@
 #!/usr/bin/env bash
 
+escontainer=docker.elastic.co/elasticsearch/elasticsearch:${elasticsearch.version}
+
+echo "About to install docker container $escontainer"
+
+docker pull $escontainer
+
 DIRNAME=`dirname "$0"`
+export GREP="grep"
+
+. "$DIRNAME/common.sh"
 
 # OS specific support (must be 'true' or 'false').
 cygwin=false;
-other=false
+darwin=false;
 case "`uname`" in
     CYGWIN*)
         cygwin=true
         ;;
 
-    *)
-        other=true
+    Darwin*)
+        darwin=true
         ;;
 esac
 
@@ -39,19 +48,18 @@ else
 fi
 export JBOSS_HOME
 
+# For Cygwin, switch paths to Windows format before running java
+if $cygwin; then
+    JBOSS_HOME=`cygpath --path --windows "$JBOSS_HOME"`
+fi
+
 JBOSS_CONFIG="standalone"
 JBOSS_SERVER_DIR="$JBOSS_HOME/$JBOSS_CONFIG"
+JBOSS_DATA_DIR="$JBOSS_SERVER_DIR/data"
 
-TMP_DIR="$JBOSS_SERVER_DIR/tmp"
+esdatadir=$JBOSS_DATA_DIR/bedework/elasticsearch
 
-export JBOSS_PIDFILE=$TMP_DIR/bedework.jboss.pid
 
-echo "pidfile=$JBOSS_PIDFILE"
+chmod g+rwx $esdatadir
+chgrp 0 $esdatadir
 
-if [ -e $JBOSS_PIDFILE ]; then
-  printf "Shutting down jboss:  "
-  kill -15 `cat $JBOSS_PIDFILE`
-  rm $JBOSS_PIDFILE
-else
-  echo "jboss doesn't appear to be running."
-fi

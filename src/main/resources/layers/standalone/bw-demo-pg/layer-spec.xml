@@ -11,4 +11,8 @@
         <layer name="bw-selfreg-pg"/>
         <layer name="bw-synch-pg"/>
     </dependencies>
+
+    <packages>
+        <package name="deploy.dockeres"/>
+    </packages>
 </layer-spec>

@@ -4,14 +4,14 @@ DIRNAME=`dirname "$0"`
 
 # OS specific support (must be 'true' or 'false').
 cygwin=false;
-other=false
+darwin=false;
 case "`uname`" in
     CYGWIN*)
         cygwin=true
         ;;
 
-    *)
-        other=true
+    Darwin*)
+        darwin=true
         ;;
 esac
 
@@ -43,15 +43,15 @@ JBOSS_CONFIG="standalone"
 JBOSS_SERVER_DIR="$JBOSS_HOME/$JBOSS_CONFIG"
 
 TMP_DIR="$JBOSS_SERVER_DIR/tmp"
+CIDFILE="$TMP_DIR/es.cid"
 
-export JBOSS_PIDFILE=$TMP_DIR/bedework.jboss.pid
-
-echo "pidfile=$JBOSS_PIDFILE"
-
-if [ -e $JBOSS_PIDFILE ]; then
-  printf "Shutting down jboss:  "
-  kill -15 `cat $JBOSS_PIDFILE`
-  rm $JBOSS_PIDFILE
+if [ -f "$CIDFILE" ]; then
+  printf "Shutting down es:  "
+  printf "Shutting down ES:  "
+  read -r CID<$CIDFILE
+  echo "CID=$CID"
+  docker stop $CID
+  rm $CIDFILE
 else
-  echo "jboss doesn't appear to be running."
+  echo "ES doesn't appear to be running."
 fi

@@ -16,6 +16,18 @@ JAVA_OPTS="$JAVA_OPTS -Dcom.bedework.sync.server=http://localhost:8080"
 
 DIRNAME=`dirname "$0"`
 
+# OS specific support (must be 'true' or 'false').
+cygwin=false;
+other=false
+case "`uname`" in
+    CYGWIN*)
+        cygwin=true
+        ;;
+    *)
+        other=true
+        ;;
+esac
+
 # For Cygwin, ensure paths are in UNIX format before anything is touched
 if $cygwin ; then
     [ -n "$JBOSS_HOME" ] &&
@@ -240,7 +252,7 @@ export JAVA_OPTS="$JAVA_OPTS -XX:MetaspaceSize=$permsize -XX:MaxMetaspaceSize=$p
 
 RUN_CMD="$JBOSS_HOME/bin/standalone.sh"
 RUN_CMD="$RUN_CMD $JBOSS_BIND"
-%RUN_CMD="$RUN_CMD $HAWT_OPTS"
+#RUN_CMD="$RUN_CMD $HAWT_OPTS"
 RUN_CMD="$RUN_CMD $testmode"
 RUN_CMD="$RUN_CMD $LOG_THRESHOLD $LOG_LEVELS"
 RUN_CMD="$RUN_CMD $BW_CONF_DIR_DEF $BW_CONF_FILE_DEF $BW_DATA_DIR_DEF"

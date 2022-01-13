@@ -334,6 +334,15 @@
       <artifactId>bw-util-jolokia</artifactId>
     </dependency>
 
+    <!-- ================= bw-esdata ================= -->
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-esdata</artifactId>
+      <type>zip</type>
+    </dependency>
+
+
     <!-- ============ bw-event-registration ============ -->
 
     <dependency>

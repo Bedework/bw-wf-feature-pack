@@ -1,17 +1,22 @@
 #!/usr/bin/env bash
 
+echo "About to start ES docker image"
+
 DIRNAME=`dirname "$0"`
+export GREP="grep"
+
+. "$DIRNAME/common.sh"
 
 # OS specific support (must be 'true' or 'false').
 cygwin=false;
-other=false
+darwin=false;
 case "`uname`" in
     CYGWIN*)
         cygwin=true
         ;;
 
-    *)
-        other=true
+    Darwin*)
+        darwin=true
         ;;
 esac
 
@@ -39,19 +44,32 @@ else
 fi
 export JBOSS_HOME
 
+# For Cygwin, switch paths to Windows format before running java
+if $cygwin; then
+    JBOSS_HOME=`cygpath --path --windows "$JBOSS_HOME"`
+fi
+
 JBOSS_CONFIG="standalone"
 JBOSS_SERVER_DIR="$JBOSS_HOME/$JBOSS_CONFIG"
+JBOSS_DATA_DIR="$JBOSS_SERVER_DIR/data"
+
+esconfig=$JBOSS_SERVER_DIR/configuration/bedework/elasticsearch/config
+esimage=docker.elastic.co/elasticsearch/elasticsearch:${elasticsearch.version}
+eslog=$JBOSS_SERVER_DIR/log
+esdatadir=$JBOSS_DATA_DIR/bedework/elasticsearch/data
 
 TMP_DIR="$JBOSS_SERVER_DIR/tmp"
+CIDFILE="$TMP_DIR/es.cid"
 
-export JBOSS_PIDFILE=$TMP_DIR/bedework.jboss.pid
-
-echo "pidfile=$JBOSS_PIDFILE"
-
-if [ -e $JBOSS_PIDFILE ]; then
-  printf "Shutting down jboss:  "
-  kill -15 `cat $JBOSS_PIDFILE`
-  rm $JBOSS_PIDFILE
-else
-  echo "jboss doesn't appear to be running."
+if [ ! -d "$TMP_DIR" ]; then
+  mkdir -p $TMP_DIR
 fi
+
+if [ -f "$CIDFILE" ]; then
+  printf "Warning: cidfile $CIDFILE exists - trying to shut down running process"
+  $DIRNAME/bwstopes.sh
+fi
+
+rm $CIDFILE
+
+docker run -d --cidfile=$CIDFILE -p 9200:9200 -p 9300:9300 --group-add=0 --volume=$esconfig:/usr/share/elasticsearch/config --volume=$esdatadir:/usr/share/elasticsearch/data  --volume=$eslog:/usr/share/elasticsearch/logs $esimage
