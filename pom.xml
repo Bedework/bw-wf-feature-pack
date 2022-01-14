@@ -33,6 +33,8 @@
 
     <bw-project-carddav>${project.basedir}/../bw-carddav/</bw-project-carddav>
 
+    <bw-project-category>${project.basedir}/../bw-category/</bw-project-category>
+
     <bw-project-deploy>${project.basedir}/../bw-deploy/</bw-project-deploy>
 
     <bw-project-eventreg>${project.basedir}/../bw-event-registration/</bw-project-eventreg>
@@ -960,6 +962,28 @@
             </configuration>
           </execution>
 
+          <!-- Build category wars and ears -->
+          <execution>
+            <id>build-deployable-category-modules</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+
+            <configuration>
+              <executable>mvn</executable>
+              <workingDirectory>${bw-project-category}</workingDirectory>
+              <arguments>
+                <argument>-Pbedework-dev</argument>
+                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
+                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
+                <argument>clean</argument>
+                <argument>install</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
           <!-- Build eventreg wars and ears -->
           <execution>
             <id>build-deployable-eventreg-modules</id>
@@ -1244,6 +1268,25 @@
                   <directory>${bw-ear-deployment-location}</directory>
                   <includes>
                     <include>bw-carddav*/**</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>copy-category-ear</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${resourcesDir}/packages/deploy.category/pm/wildfly/resources/ear/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${bw-ear-deployment-location}</directory>
+                  <includes>
+                    <include>bw-category*/**</include>
                   </includes>
                 </resource>
               </resources>
