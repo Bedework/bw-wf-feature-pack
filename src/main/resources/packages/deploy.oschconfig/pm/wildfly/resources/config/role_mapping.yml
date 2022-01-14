@@ -1,7 +1,7 @@
-# Role mapping configuration file which has elasticsearch roles as keys
+# Role mapping configuration file which has Opensearch roles as keys
 # that map to one or more user or group distinguished names
 
-#roleA:   this is an elasticsearch role
+#roleA:   this is an Opensearch role
 #  - groupA-DN  this is a group distinguished name
 #  - groupB-DN
 #  - user1-DN   this is the full user distinguished name

@@ -197,7 +197,7 @@
     </feature>
 
     <feature spec="subsystem.logging.logger">
-        <param name="logger" value="org.elasticsearch"/>
+        <param name="logger" value="org.opensearch"/>
         <param name="level" value="INFO"/>
     </feature>
 

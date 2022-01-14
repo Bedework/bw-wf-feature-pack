@@ -537,7 +537,7 @@
 
     <dependency>
       <groupId>org.bedework</groupId>
-      <artifactId>bw-util-elasticsearch</artifactId>
+      <artifactId>bw-util-opensearch</artifactId>
     </dependency>
 
     <dependency>

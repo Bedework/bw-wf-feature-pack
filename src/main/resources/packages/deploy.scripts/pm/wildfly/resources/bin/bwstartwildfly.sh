@@ -7,8 +7,8 @@ JAVA_OPTS="$JAVA_OPTS -Dcom.bedework.site.name=bwtest"
 # Location of database server
 JAVA_OPTS="$JAVA_OPTS -Dcom.bedework.db.ip=localhost"
 
-# Host and port of ES - repeated with "," if multiple nodes.
-JAVA_OPTS="$JAVA_OPTS -Dcom.bedework.esurls=localhost:9200"
+# Host and port of OpenSearch - repeated with "," if multiple nodes.
+JAVA_OPTS="$JAVA_OPTS -Dcom.bedework.oschurls=localhost:9200"
 
 # Location of sync server - needed for subscriptions.
 # Fine to leave it if you don't intend using subscriptions.
@@ -225,10 +225,10 @@ BW_CONF_DIR="$JBOSS_SERVER_DIR/configuration/bedework"
 BW_CONF_FILE_DEF="-Dorg.bedework.config.pfile=$BW_CONF_DIR/config.defs"
 BW_CONF_DIR_DEF="-Dorg.bedework.config.dir=$BW_CONF_DIR/"
 
-# Elastic search home
+# Opensearch home
 
-export ES_HOME="$BW_DATA_DIR/elasticsearch"
-JAVA_OPTS="$JAVA_OPTS -Des.path.home=$ES_HOME"
+export OSCH_HOME="$BW_DATA_DIR/opensearch"
+JAVA_OPTS="$JAVA_OPTS -Dosch.path.home=$OSCH_HOME"
 
 JAVA_OPTS="$JAVA_OPTS -Xms$heap -Xmx$heap -Xss$stack"
 

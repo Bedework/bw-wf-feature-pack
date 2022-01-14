@@ -49,7 +49,7 @@ JBOSS_CONFIG="standalone"
 JBOSS_SERVER_DIR="$BASE_DIR/$JBOSS_VERSION/$JBOSS_CONFIG"
 JBOSS_DATA_DIR="$JBOSS_SERVER_DIR/data"
 bedework_data_dir="$JBOSS_DATA_DIR/bedework"
-es_data_dir="$bwESdatadir"
+osch_data_dir="$bwESdatadir"
 
 TMP_DIR="$JBOSS_SERVER_DIR/tmp"
 
@@ -67,8 +67,8 @@ echo -n "Shutting down h2:  "
 echo -n "Shutting down apacheds:  "
 ./dirstop
 
-echo -n "Shutting down elastic search:  "
-./stopES
+echo -n "Shutting down open search:  "
+./stopOSCH
 
 # -------------------------------------------------------------------
 # Each step is a function
@@ -104,20 +104,20 @@ installData() {
 
   cd $BASE_DIR
 
-  # ------------------------------------- ES data
+  # ------------------------------------- Opensearch data
 
   cd $TMP_DIR/
-  rm elasticsearch.zip
+  rm opensearch.zip
   rm -rf nodes
-  cp $resources/data/elasticsearch.zip .
+  cp $resources/data/opensearch.zip .
 
-  unzip elasticsearch.zip
+  unzip opensearch.zip
 
-  rm elasticsearch.zip
+  rm opensearch.zip
 
-  rm -rf $es_data_dir
-  mkdir $es_data_dir
-  cp -r nodes $es_data_dir/
+  rm -rf $osch_data_dir
+  mkdir $osch_data_dir
+  cp -r nodes $osch_data_dir/
 
   # ------------------------------------- directory data
 

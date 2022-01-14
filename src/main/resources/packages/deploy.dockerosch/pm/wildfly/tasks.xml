@@ -2,7 +2,7 @@
 
 <tasks xmlns="urn:wildfly:wildfly-feature-pack-tasks:3.0">
     <copy-artifact artifact="org.bedework.deploy:bw-esdata:::zip"
-                   to-location="standalone/data/bedework/elasticsearch"
+                   to-location="standalone/data/bedework/opensearch"
                    extract="true"/>
     <copy-path src="resources/bin/"
                relative-to="resources"

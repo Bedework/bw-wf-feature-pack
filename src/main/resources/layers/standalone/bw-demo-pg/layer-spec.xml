@@ -13,6 +13,6 @@
     </dependencies>
 
     <packages>
-        <package name="deploy.dockeres"/>
+        <package name="deploy.dockerosch"/>
     </packages>
 </layer-spec>

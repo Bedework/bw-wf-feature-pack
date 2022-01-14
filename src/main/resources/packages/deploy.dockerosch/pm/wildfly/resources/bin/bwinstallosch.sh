@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-escontainer=docker.elastic.co/elasticsearch/elasticsearch:${elasticsearch.version}
+oschimage=docker.elastic.co/opensearch/opensearch:${opensearch.version}
 
-echo "About to install docker container $escontainer"
+echo "About to install docker container $oschimage"
 
-docker pull $escontainer
+docker pull $oschimage
 
 DIRNAME=`dirname "$0"`
 export GREP="grep"
@@ -57,9 +57,9 @@ JBOSS_CONFIG="standalone"
 JBOSS_SERVER_DIR="$JBOSS_HOME/$JBOSS_CONFIG"
 JBOSS_DATA_DIR="$JBOSS_SERVER_DIR/data"
 
-esdatadir=$JBOSS_DATA_DIR/bedework/elasticsearch
+oschdatadir=$JBOSS_DATA_DIR/bedework/opensearch
 
 
-chmod g+rwx $esdatadir
-chgrp 0 $esdatadir
+chmod g+rwx $oschdatadir
+chgrp 0 $oschdatadir
 

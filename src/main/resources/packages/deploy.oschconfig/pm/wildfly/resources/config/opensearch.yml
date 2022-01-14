@@ -1,6 +1,6 @@
-# ======================== Elasticsearch Configuration =========================
+# ======================== Opensearch Configuration =========================
 #
-# NOTE: Elasticsearch comes with reasonable defaults for most settings.
+# NOTE: Opensearch comes with reasonable defaults for most settings.
 #       Before you set out to tweak and tune the configuration, make sure you
 #       understand what are you trying to accomplish and the consequences.
 #
@@ -8,7 +8,7 @@
 # the most important settings you may want to configure for a production cluster.
 #
 # Please consult the documentation for further information on configuration options:
-# https://www.elastic.co/guide/en/elasticsearch/reference/index.html
+# https://www.opensearch.org
 #
 # ----------------------------------- Local ------------------------------------
 #
@@ -56,18 +56,18 @@ node.name: bw2019-1
 # on the system and that the owner of the process is allowed to use this
 # limit.
 #
-# Elasticsearch performs poorly when the system is swapping the memory.
+# Opensearch performs poorly when the system is swapping the memory.
 #
 # ---------------------------------- Network -----------------------------------
 #
-# By default Elasticsearch is only accessible on localhost. Set a different
+# By default Opensearch is only accessible on localhost. Set a different
 # address here to expose this node on the network:
 #
 #network.host: 192.168.0.1
 # This is needed for the docker version
 network.host: 0.0.0.0
 #
-# By default Elasticsearch listens for HTTP traffic on the first free port it
+# By default Opensearch listens for HTTP traffic on the first free port it
 # finds starting at 9200. Set a specific HTTP port here:
 #
 #http.port: 9200

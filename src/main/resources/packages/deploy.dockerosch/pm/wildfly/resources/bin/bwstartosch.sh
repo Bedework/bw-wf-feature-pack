@@ -53,13 +53,13 @@ JBOSS_CONFIG="standalone"
 JBOSS_SERVER_DIR="$JBOSS_HOME/$JBOSS_CONFIG"
 JBOSS_DATA_DIR="$JBOSS_SERVER_DIR/data"
 
-esconfig=$JBOSS_SERVER_DIR/configuration/bedework/elasticsearch/config
-esimage=docker.elastic.co/elasticsearch/elasticsearch:${elasticsearch.version}
-eslog=$JBOSS_SERVER_DIR/log
-esdatadir=$JBOSS_DATA_DIR/bedework/elasticsearch/data
+oschconfig=$JBOSS_SERVER_DIR/configuration/bedework/opensearch/config
+oschimage=docker.elastic.co/opensearch/opensearch:${opensearch.version}
+oschlog=$JBOSS_SERVER_DIR/log
+oschdatadir=$JBOSS_DATA_DIR/bedework/opensearch/data
 
 TMP_DIR="$JBOSS_SERVER_DIR/tmp"
-CIDFILE="$TMP_DIR/es.cid"
+CIDFILE="$TMP_DIR/osch.cid"
 
 if [ ! -d "$TMP_DIR" ]; then
   mkdir -p $TMP_DIR
@@ -67,9 +67,9 @@ fi
 
 if [ -f "$CIDFILE" ]; then
   printf "Warning: cidfile $CIDFILE exists - trying to shut down running process"
-  $DIRNAME/bwstopes.sh
+  $DIRNAME/bwstoposch.sh
 fi
 
 rm $CIDFILE
 
-docker run -d --cidfile=$CIDFILE -p 9200:9200 -p 9300:9300 --group-add=0 --volume=$esconfig:/usr/share/elasticsearch/config --volume=$esdatadir:/usr/share/elasticsearch/data  --volume=$eslog:/usr/share/elasticsearch/logs $esimage
+docker run -d --cidfile=$CIDFILE -p 9200:9200 -p 9300:9300 --group-add=0 --volume=$oschconfig:/usr/share/opensearch/config --volume=$oschdatadir:/usr/share/opensearch/data  --volume=$oschlog:/usr/share/opensearch/logs $oschimage

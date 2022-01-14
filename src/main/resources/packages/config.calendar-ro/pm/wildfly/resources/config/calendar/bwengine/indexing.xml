@@ -2,12 +2,12 @@
 
 <index-properties xmlns="http://bedework.org/ns/" type="org.bedework.indexer.IndexPropertiesImpl">
   <account>admin</account>
-  <dataDir>${org.bedework.data.dir}/elasticsearch/</dataDir>
+  <dataDir>${org.bedework.data.dir}/opensearch/</dataDir>
   <discardMessages>true</discardMessages>
   <indexPublic>true</indexPublic>
   <indexUsers>true</indexUsers>
-  <indexerConfig>${org.bedework.config.dir}/elasticsearch/</indexerConfig>
-  <indexerURL>${com.bedework.esurls}</indexerURL>
+  <indexerConfig>${org.bedework.config.dir}/opensearch/</indexerConfig>
+  <indexerURL>${com.bedework.oschurls}</indexerURL>
   <indexerUser>bedework</indexerUser>
   <indexerPw>bedework</indexerPw>
   <maxEntityThreads>2</maxEntityThreads>
