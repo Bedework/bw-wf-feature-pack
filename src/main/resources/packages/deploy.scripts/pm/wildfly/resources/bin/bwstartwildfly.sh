@@ -16,47 +16,7 @@ JAVA_OPTS="$JAVA_OPTS -Dcom.bedework.sync.server=http://localhost:8080"
 
 DIRNAME=`dirname "$0"`
 
-# OS specific support (must be 'true' or 'false').
-cygwin=false;
-other=false
-case "`uname`" in
-    CYGWIN*)
-        cygwin=true
-        ;;
-    *)
-        other=true
-        ;;
-esac
-
-# For Cygwin, ensure paths are in UNIX format before anything is touched
-if $cygwin ; then
-    [ -n "$JBOSS_HOME" ] &&
-        JBOSS_HOME=`cygpath --unix "$JBOSS_HOME"`
-    [ -n "$JAVA_HOME" ] &&
-        JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
-    [ -n "$JAVAC_JAR" ] &&
-        JAVAC_JAR=`cygpath --unix "$JAVAC_JAR"`
-fi
-
-# Setup JBOSS_HOME
-RESOLVED_JBOSS_HOME=`cd "$DIRNAME/.."; pwd`
-if [ "x$JBOSS_HOME" = "x" ]; then
-    # get the full path (without any relative bits)
-    JBOSS_HOME=$RESOLVED_JBOSS_HOME
-else
- SANITIZED_JBOSS_HOME=`cd "$JBOSS_HOME"; pwd`
- if [ "$RESOLVED_JBOSS_HOME" != "$SANITIZED_JBOSS_HOME" ]; then
-   echo "WARNING JBOSS_HOME may be pointing to a different installation - unpredictable results may occur."
-   echo ""
- fi
-fi
-export JBOSS_HOME
-
-JBOSS_CONFIG="standalone"
-JBOSS_SERVER_DIR="$JBOSS_HOME/$JBOSS_CONFIG"
-JBOSS_DATA_DIR="$JBOSS_SERVER_DIR/data"
-
-TMP_DIR="$JBOSS_SERVER_DIR/tmp"
+. $DIRNAME/bwcommon.sh
 
 export JBOSS_PIDFILE=$TMP_DIR/bedework.jboss.pid
 export LAUNCH_JBOSS_IN_BACKGROUND=true
@@ -128,7 +88,6 @@ fi
 # =================== End defaults ===============================
 
 LOG_THRESHOLD="-Dorg.bedework.log.level=INFO"
-JBOSS_VERSION="wildfly"
 
 while [ "$1" != "" ]
 do
@@ -159,11 +118,6 @@ do
       permsize="$1"
       shift
       ;;
-    -jboss)
-      shift
-      JBOSS_VERSION="$1"
-      shift
-      ;;
     -oomdump)
       shift
       oomdump="-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=$1/heap-$(date +'%Y-%m-%d_%H:%m:%S').hprof"
@@ -179,7 +133,6 @@ do
       ;;
     -debug)
       shift
-      debugGc=true
       LOG_THRESHOLD="-Dorg.bedework.log.level=DEBUG"
       ;;
     -debugexprfilters)
@@ -193,10 +146,6 @@ do
       ;;
   esac
 done
-
-JBOSS_CONFIG="standalone"
-JBOSS_SERVER_DIR="$JBOSS_HOME/$JBOSS_CONFIG"
-JBOSS_DATA_DIR="$JBOSS_SERVER_DIR/data"
 
 # If this is empty only localhost will be available.
 # With this address anybody can access the consoles if they are not locked down.
@@ -239,7 +188,7 @@ JAVA_OPTS="$JAVA_OPTS $profiler"
 
 #HAWT_OPTS="-Dhawtio.authenticationEnabled=true -Dhawtio.realm=other -Dhawtio.role=hawtioadmin"
 
-GC_LOG=true
+export GC_LOG=true
 #if [ "$debugGc" = "true" ] ; then
   # Java 8 export JAVA_OPTS="$JAVA_OPTS -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -Xloggc:$JBOSS_SERVER_DIR/log/jvm.log -verbose:gc "
 #  touch $JBOSS_SERVER_DIR/log/loggc.log
