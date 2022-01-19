@@ -8,7 +8,7 @@ JAVA_OPTS="$JAVA_OPTS -Dcom.bedework.site.name=bwtest"
 JAVA_OPTS="$JAVA_OPTS -Dcom.bedework.db.ip=localhost"
 
 # Host and port of OpenSearch - repeated with "," if multiple nodes.
-JAVA_OPTS="$JAVA_OPTS -Dcom.bedework.oschurls=localhost:9200"
+JAVA_OPTS="$JAVA_OPTS -Dcom.bedework.oschurls=https://localhost:9200"
 
 # Location of sync server - needed for subscriptions.
 # Fine to leave it if you don't intend using subscriptions.

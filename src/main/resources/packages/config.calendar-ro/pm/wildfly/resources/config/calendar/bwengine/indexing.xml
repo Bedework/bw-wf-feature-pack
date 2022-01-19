@@ -2,14 +2,15 @@
 
 <index-properties xmlns="http://bedework.org/ns/" type="org.bedework.indexer.IndexPropertiesImpl">
   <account>admin</account>
-  <dataDir>${org.bedework.data.dir}/opensearch/</dataDir>
   <discardMessages>true</discardMessages>
   <indexPublic>true</indexPublic>
   <indexUsers>true</indexUsers>
   <indexerConfig>${org.bedework.config.dir}/opensearch/</indexerConfig>
   <indexerURL>${com.bedework.oschurls}</indexerURL>
-  <indexerUser>bedework</indexerUser>
-  <indexerPw>bedework</indexerPw>
+  <indexerUser>admin</indexerUser>
+  <indexerPw>admin</indexerPw>
+  <keyStore>${org.bedework.config.dir}/opensearch/config/osch.keystore</keyStore>
+  <keyStorePw>nopassword</keyStorePw>
   <maxEntityThreads>2</maxEntityThreads>
   <maxPrincipalThreads>2</maxPrincipalThreads>
   <skipPaths>*/Deleted</skipPaths>
