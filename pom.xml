@@ -13,13 +13,6 @@
   <description>Build Wildfly Galleon feature pack</description>
   <url>https://github.com/Bedework/bw-wf-feature-pack</url>
 
-  <repositories>
-    <repository>
-      <id>patched-hibernate-repo</id>
-      <url>file:${project.basedir}../bw-wfmodules/repo</url>
-    </repository>
-  </repositories>
-
   <properties>
     <!-- Location of the bedework module build project.
          The exec-maven-plugin will execute a goal to generate
@@ -52,7 +45,7 @@
     <bw-ear-deployment-location>${project.build.directory}/generated/wildfly/standalone/deployments/</bw-ear-deployment-location>
     <resourcesDir>${project.build.directory}/generated/resources</resourcesDir>
 
-    <bw.deployment.properties>${bw-project-bedework}/config/wildfly.feature-pack.deploy.properties</bw.deployment.properties>
+    <bw.deployment.properties>${project.basedir}/src/main/resources/config/wildfly.feature-pack.deploy.properties</bw.deployment.properties>
 
     <modulesDir>${project.build.directory}/generated-modules</modulesDir>
 
@@ -860,7 +853,7 @@
             </goals>
 
             <configuration>
-              <executable>mvn</executable>
+              <executable>${maven.executable}</executable>
               <workingDirectory>${bw-wfmodules-location}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
@@ -883,7 +876,7 @@
             </goals>
 
             <configuration>
-              <executable>mvn</executable>
+              <executable>${maven.executable}</executable>
               <workingDirectory>${bw-project-xml}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
@@ -904,7 +897,7 @@
             </goals>
 
             <configuration>
-              <executable>mvn</executable>
+              <executable>${maven.executable}</executable>
               <workingDirectory>${bw-project-deploy}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
@@ -927,7 +920,7 @@
             </goals>
 
             <configuration>
-              <executable>mvn</executable>
+              <executable>${maven.executable}</executable>
               <workingDirectory>${bw-project-calendar-xsl}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
@@ -949,7 +942,7 @@
             </goals>
 
             <configuration>
-              <executable>mvn</executable>
+              <executable>${maven.executable}</executable>
               <workingDirectory>${bw-project-carddav}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
@@ -971,7 +964,7 @@
             </goals>
 
             <configuration>
-              <executable>mvn</executable>
+              <executable>${maven.executable}</executable>
               <workingDirectory>${bw-project-category}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
@@ -993,7 +986,7 @@
             </goals>
 
             <configuration>
-              <executable>mvn</executable>
+              <executable>${maven.executable}</executable>
               <workingDirectory>${bw-project-eventreg}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
@@ -1015,7 +1008,7 @@
             </goals>
 
             <configuration>
-              <executable>mvn</executable>
+              <executable>${maven.executable}</executable>
               <workingDirectory>${bw-project-notifier}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
@@ -1037,7 +1030,7 @@
             </goals>
 
             <configuration>
-              <executable>mvn</executable>
+              <executable>${maven.executable}</executable>
               <workingDirectory>${bw-project-selfreg}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
@@ -1059,7 +1052,7 @@
             </goals>
 
             <configuration>
-              <executable>mvn</executable>
+              <executable>${maven.executable}</executable>
               <workingDirectory>${bw-project-synch}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
@@ -1081,7 +1074,7 @@
             </goals>
 
             <configuration>
-              <executable>mvn</executable>
+              <executable>${maven.executable}</executable>
               <workingDirectory>${bw-project-timezones}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
