@@ -110,6 +110,14 @@
       <type>zip</type>
     </dependency>
 
+    <!-- ================= bw-bedeworkqs ================= -->
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-bedeworkqs</artifactId>
+      <type>zip</type>
+    </dependency>
+
     <!-- ================= bw-caldav ================= -->
 
     <dependency>
@@ -1177,6 +1185,7 @@
 
           <!-- Deploy each ear to the correct resource directory -->
 
+          <!--
           <execution>
             <id>copy-xml-ear</id>
             <phase>process-resources</phase>
@@ -1197,7 +1206,6 @@
             </configuration>
           </execution>
 
-          <!--
           <execution>
             <id>copy-calendar-ro-ear</id>
             <phase>process-resources</phase>

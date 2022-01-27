@@ -1,16 +1,7 @@
 <?xml version="1.0" ?>
 
 <tasks xmlns="urn:wildfly:wildfly-feature-pack-tasks:3.0">
-    <copy-path src="resources/resources"
-               relative-to="resources"
-               target="bedework-content/resources"
-               replace-props="false" />
-    <copy-path src="resources/index.html"
-               relative-to="resources"
-               target="bedework-content/index.html"
-               replace-props="true" />
-    <copy-path src="resources/resources/headBg2.jpg"
-               relative-to="resources"
-               target="bedework-content/headBg2.jpg"
-               replace-props="false" />
+    <copy-artifact artifact="org.bedework.deploy:bw-bedeworkqs:::zip"
+                   to-location="bedework-content"
+                   extract="true"/>
 </tasks>
