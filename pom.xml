@@ -28,7 +28,7 @@
 
     <bw-project-category>${project.basedir}/../bw-category/</bw-project-category>
 
-    <bw-project-deploy>${project.basedir}/../bw-deploy/</bw-project-deploy>
+    <bw-project-calendar-deploy>${project.basedir}/../bw-calendar-deploy/</bw-project-calendar-deploy>
 
     <bw-project-eventreg>${project.basedir}/../bw-event-registration/</bw-project-eventreg>
 
@@ -898,7 +898,7 @@
 
             <configuration>
               <executable>${maven.executable}</executable>
-              <workingDirectory>${bw-project-deploy}</workingDirectory>
+              <workingDirectory>${bw-project-calendar-deploy}</workingDirectory>
               <arguments>
                 <argument>-Pbedework-dev</argument>
                 <argument>-Dbw-wildfly-feature-pack-build=true</argument>
