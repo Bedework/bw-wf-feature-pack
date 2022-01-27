@@ -285,6 +285,14 @@
       <artifactId>bw-calendar-engine-tools</artifactId>
     </dependency>
 
+    <!-- ================= bw-calendar-xsl ================= -->
+
+    <dependency>
+      <groupId>org.bedework.bwxsl</groupId>
+      <artifactId>bw-calendar-xsl</artifactId>
+      <type>war</type>
+    </dependency>
+
     <!-- ================= bw-carddav ================= -->
 
     <dependency>
@@ -927,7 +935,7 @@
           </execution>
           -->
 
-          <!-- Build calendar xsl war -->
+          <!-- Build calendar xsl war
           <execution>
             <id>build-deployable-calendar-xsl</id>
             <phase>process-sources</phase>
@@ -948,6 +956,7 @@
               </arguments>
             </configuration>
           </execution>
+          -->
 
           <!-- Build carddav wars and ears -->
           <execution>
@@ -1226,7 +1235,6 @@
               </resources>
             </configuration>
           </execution>
-          -->
 
           <execution>
             <id>copy-calendar-xsl-war</id>
@@ -1246,6 +1254,7 @@
               </resources>
             </configuration>
           </execution>
+          -->
 
           <execution>
             <id>copy-bedework-war</id>
