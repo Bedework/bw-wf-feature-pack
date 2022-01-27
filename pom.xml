@@ -214,6 +214,14 @@
       <artifactId>bw-calendar-sysevents-msgs</artifactId>
     </dependency>
 
+    <!-- ============= bw-calendar-data ============= -->
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-calendar-data-h2</artifactId>
+      <type>zip</type>
+    </dependency>
+
     <!-- ============= bw-calendar-engine ============= -->
 
     <dependency>
@@ -1376,22 +1384,6 @@
                   <includes>
                     <include>bw-timezone*/**</include>
                   </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>copy-timezones-data</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}/packages/data.timezones/pm/wildfly/resources/</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${bw-project-timezones}bw-timezone-server-data/src/main/resources</directory>
                 </resource>
               </resources>
             </configuration>

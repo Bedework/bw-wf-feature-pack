@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <tasks xmlns="urn:wildfly:wildfly-feature-pack-tasks:3.0">
-    <copy-path src="resources/"
-               relative-to="resources"
-               target="standalone/data/bedework/"/>
+    <copy-artifact artifact="org.bedework.deploy:bw-calendar-data-h2:::zip"
+                   to-location="standalone/data/bedework/h2"
+                   extract="true"/>
 </tasks>
