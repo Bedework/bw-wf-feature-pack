@@ -162,8 +162,14 @@
     <!-- ============= bw-calendar-x.ear ============= -->
 
     <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-calendar-ro-ear</artifactId>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-calendar-ro</artifactId>
+      <type>ear</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-calendar-all</artifactId>
       <type>ear</type>
     </dependency>
 
@@ -897,6 +903,7 @@
             </configuration>
           </execution>
 
+          <!--
           <execution>
             <id>build-deployable-calendar-modules</id>
             <phase>process-sources</phase>
@@ -918,6 +925,7 @@
               </arguments>
             </configuration>
           </execution>
+          -->
 
           <!-- Build calendar xsl war -->
           <execution>
@@ -1180,6 +1188,7 @@
             </configuration>
           </execution>
 
+          <!--
           <execution>
             <id>copy-calendar-ro-ear</id>
             <phase>process-resources</phase>
@@ -1217,6 +1226,7 @@
               </resources>
             </configuration>
           </execution>
+          -->
 
           <execution>
             <id>copy-calendar-xsl-war</id>
