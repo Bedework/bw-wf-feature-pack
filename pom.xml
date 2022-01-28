@@ -313,6 +313,12 @@
       <artifactId>bw-carddav-server</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.bedework</groupId>
+      <artifactId>bw-carddav-ear</artifactId>
+      <type>ear</type>
+    </dependency>
+
     <!-- ================= bw-category ================= -->
 
     <dependency>
@@ -385,6 +391,12 @@
       <artifactId>bw-event-registration-web</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.bedework.evreg</groupId>
+      <artifactId>bw-event-registration-ear</artifactId>
+      <type>ear</type>
+    </dependency>
+
     <!-- ================= bw-jsforj ================= -->
 
     <dependency>
@@ -441,6 +453,12 @@
     <dependency>
       <groupId>org.bedework.selfreg</groupId>
       <artifactId>bw-self-registration-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.selfreg</groupId>
+      <artifactId>bw-self-registration-ear</artifactId>
+      <type>ear</type>
     </dependency>
 
     <!-- ================= bw-synch ================= -->
