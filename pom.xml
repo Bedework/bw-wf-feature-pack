@@ -937,7 +937,6 @@
             </configuration>
           </execution>
 
-          <!--
           <execution>
             <id>build-deployable-calendar-modules</id>
             <phase>process-sources</phase>
@@ -959,9 +958,8 @@
               </arguments>
             </configuration>
           </execution>
-          -->
 
-          <!-- Build calendar xsl war
+          <!-- Build calendar xsl war -->
           <execution>
             <id>build-deployable-calendar-xsl</id>
             <phase>process-sources</phase>
@@ -982,7 +980,6 @@
               </arguments>
             </configuration>
           </execution>
-          -->
 
           <!-- Build carddav wars and ears -->
           <execution>
@@ -1203,7 +1200,6 @@
 
           <!-- Deploy each ear to the correct resource directory -->
 
-          <!--
           <execution>
             <id>copy-xml-ear</id>
             <phase>process-resources</phase>
@@ -1236,7 +1232,7 @@
                 <resource>
                   <directory>${bw-ear-deployment-location}</directory>
                   <includes>
-                    <include>bw-calro*/**</include>
+                    <include>bw-calendar-ro*/**</include>
                   </includes>
                 </resource>
               </resources>
@@ -1255,7 +1251,7 @@
                 <resource>
                   <directory>${bw-ear-deployment-location}</directory>
                   <includes>
-                    <include>bw-cal-*/**</include>
+                    <include>bw-calendar-all-*/**</include>
                   </includes>
                 </resource>
               </resources>
@@ -1280,7 +1276,6 @@
               </resources>
             </configuration>
           </execution>
-          -->
 
           <execution>
             <id>copy-bedework-war</id>

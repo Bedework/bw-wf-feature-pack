@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <tasks xmlns="urn:wildfly:wildfly-feature-pack-tasks:3.0">
-    <copy-artifact artifact="org.bedework.deploy:bw-calendar-all:::ear"
-                   to-location="standalone/deployments/"
-                   extract="true"/>
+    <copy-path src="resources/ear/"
+               relative-to="resources"
+               target="standalone/deployments/" />
 </tasks>
