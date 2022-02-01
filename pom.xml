@@ -8,7 +8,7 @@
   </parent>
 
   <artifactId>bw-wf-feature-pack</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>4.0.0-SNAPSHOT</version>
   <name>Bedework: Wildfly Galleon feature pack</name>
   <description>Build Wildfly Galleon feature pack</description>
   <url>https://github.com/Bedework/bw-wf-feature-pack</url>
