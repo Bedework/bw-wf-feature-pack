@@ -430,7 +430,8 @@
 
             <feature spec="subsystem.undertow.server.host.setting.access-log">
                 <param name="pattern"
-                       value="&quot;%h %l %u [%t] \&quot;%r\&quot; %s %b \&quot;%{i,Referer};\&quot; \&quot;%{i,User-Agent}\&quot;&quot;"/>
+                       value="&quot;%{i,X-Forwarded-For} %l %u [%t] \&quot;%r\&quot; %s %b \&quot;%{i,Referer}\&quot; \&quot;%{i,User-Agent}\&quot;&quot;"/>
+
             </feature>
 
             <feature spec="subsystem.undertow.server.host.filter-ref">
