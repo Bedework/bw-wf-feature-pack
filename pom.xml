@@ -1232,7 +1232,7 @@
                 <resource>
                   <directory>${bw-ear-deployment-location}</directory>
                   <includes>
-                    <include>bw-calendar-ro*/**</include>
+                    <include>bw-calro*/**</include>
                   </includes>
                 </resource>
               </resources>
@@ -1251,7 +1251,7 @@
                 <resource>
                   <directory>${bw-ear-deployment-location}</directory>
                   <includes>
-                    <include>bw-calendar-all-*/**</include>
+                    <include>bw-cal-*/**</include>
                   </includes>
                 </resource>
               </resources>
