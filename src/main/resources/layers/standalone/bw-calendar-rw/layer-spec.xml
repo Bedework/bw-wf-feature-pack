@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
             name="bw-calendar-rw">
-    <!-- A bedework system with updates to data -->
+    <!-- Common features (db independent) for calendar with updates to data -->
 
     <dependencies>
         <layer name="datasources-web-server"/>
