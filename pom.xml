@@ -369,7 +369,7 @@
 
     <dependency>
       <groupId>org.bedework.deploy</groupId>
-      <artifactId>bw-esdata</artifactId>
+      <artifactId>bw-oschdata</artifactId>
       <type>zip</type>
     </dependency>
 
@@ -488,6 +488,7 @@
     <dependency>
       <groupId>org.bedework.bw-tzsvr</groupId>
       <artifactId>bw-timezone-server-data</artifactId>
+      <type>zip</type>
     </dependency>
 
     <dependency>

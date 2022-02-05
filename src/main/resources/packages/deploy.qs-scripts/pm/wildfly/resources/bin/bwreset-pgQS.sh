@@ -49,7 +49,7 @@ JBOSS_CONFIG="standalone"
 JBOSS_SERVER_DIR="$BASE_DIR/$JBOSS_VERSION/$JBOSS_CONFIG"
 JBOSS_DATA_DIR="$JBOSS_SERVER_DIR/data"
 bedework_data_dir="$JBOSS_DATA_DIR/bedework"
-osch_data_dir="$bwESdatadir"
+osch_data_dir="$bwOschdatadir"
 
 TMP_DIR="$JBOSS_SERVER_DIR/tmp"
 
