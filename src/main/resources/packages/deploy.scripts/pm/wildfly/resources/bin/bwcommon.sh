@@ -2,6 +2,18 @@
 
 GREP="grep"
 
+if [ "x$BW_COMMON_CONF" = "x" ]; then
+  BW_COMMON_CONF="$DIRNAME/bwcommon.conf"
+else
+  if [ ! -r "$BW_COMMON_CONF" ]; then
+    echo "Config file not found $BW_COMMON_CONF"
+  fi
+
+fi
+if [ -r "$BW_COMMON_CONF" ]; then
+  . "$BW_COMMON_CONF"
+fi
+
 . "$DIRNAME/common.sh"
 
 # OS specific support (must be 'true' or 'false').
