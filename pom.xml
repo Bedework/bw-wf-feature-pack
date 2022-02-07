@@ -22,8 +22,6 @@
 
     <bw-project-bedework>${project.basedir}/../bedework/</bw-project-bedework>
 
-    <bw-project-calendar-xsl>${project.basedir}/../bw-calendar-xsl/</bw-project-calendar-xsl>
-
     <bw-project-carddav>${project.basedir}/../bw-carddav/</bw-project-carddav>
 
     <bw-project-category>${project.basedir}/../bw-category/</bw-project-category>
@@ -297,7 +295,43 @@
 
     <dependency>
       <groupId>org.bedework.bwxsl</groupId>
-      <artifactId>bw-calendar-xsl</artifactId>
+      <artifactId>bw-calendar-xsl-caladminrsrc</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.bwxsl</groupId>
+      <artifactId>bw-calendar-xsl-calfeedrsrc-MainCampus</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.bwxsl</groupId>
+      <artifactId>bw-calendar-xsl-calrsrc-MainCampus</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.bwxsl</groupId>
+      <artifactId>bw-calendar-xsl-calrsrc-SoEDepartmental</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.bwxsl</groupId>
+      <artifactId>bw-calendar-xsl-common</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.bwxsl</groupId>
+      <artifactId>bw-calendar-xsl-eventsubmitrsrc</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.bwxsl</groupId>
+      <artifactId>bw-calendar-xsl-ucalrsrc</artifactId>
       <type>war</type>
     </dependency>
 
@@ -960,7 +994,7 @@
             </configuration>
           </execution>
 
-          <!-- Build calendar xsl war -->
+          <!-- Build calendar xsl war
           <execution>
             <id>build-deployable-calendar-xsl</id>
             <phase>process-sources</phase>
@@ -980,7 +1014,7 @@
                 <argument>install</argument>
               </arguments>
             </configuration>
-          </execution>
+          </execution> -->
 
           <!-- Build carddav wars and ears -->
           <execution>
@@ -1228,7 +1262,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.calendar-ro/pm/wildfly/resources/ear/</outputDirectory>
+              <outputDirectory>${resourcesDir}/packages/deploy.war.calendar-ro/pm/wildfly/resources/ear/</outputDirectory>
               <resources>
                 <resource>
                   <directory>${bw-ear-deployment-location}</directory>
@@ -1247,7 +1281,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.calendar-rw/pm/wildfly/resources/ear/</outputDirectory>
+              <outputDirectory>${resourcesDir}/packages/deploy.war.calendar-rw/pm/wildfly/resources/ear/</outputDirectory>
               <resources>
                 <resource>
                   <directory>${bw-ear-deployment-location}</directory>
@@ -1259,6 +1293,7 @@
             </configuration>
           </execution>
 
+          <!--
           <execution>
             <id>copy-calendar-xsl-war</id>
             <phase>process-resources</phase>
@@ -1277,6 +1312,7 @@
               </resources>
             </configuration>
           </execution>
+          -->
 
           <execution>
             <id>copy-bedework-war</id>
@@ -1342,7 +1378,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.eventreg/pm/wildfly/resources/ear/</outputDirectory>
+              <outputDirectory>${resourcesDir}/packages/deploy.war.eventreg/pm/wildfly/resources/ear/</outputDirectory>
               <resources>
                 <resource>
                   <directory>${bw-ear-deployment-location}</directory>
@@ -1418,7 +1454,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.timezones/pm/wildfly/resources/ear/</outputDirectory>
+              <outputDirectory>${resourcesDir}/packages/deploy.war.timezones/pm/wildfly/resources/ear/</outputDirectory>
               <resources>
                 <resource>
                   <directory>${bw-ear-deployment-location}</directory>

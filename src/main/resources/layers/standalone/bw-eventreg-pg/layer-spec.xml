@@ -8,7 +8,7 @@
 
     <packages>
         <package name="config.eventreg-pg"/>
-        <package name="deploy.eventreg"/>
+        <package name="deploy.war.eventreg"/>
         <package name="deploy.xml"/>
     </packages>
 

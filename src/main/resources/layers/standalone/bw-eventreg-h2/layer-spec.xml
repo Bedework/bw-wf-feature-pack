@@ -9,7 +9,7 @@
     <packages>
         <package name="config.eventreg-h2"/>
         <package name="data.eventreg-h2"/>
-        <package name="deploy.eventreg"/>
+        <package name="deploy.war.eventreg"/>
         <package name="deploy.xml"/>
     </packages>
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
+            name="bw-demo-h2">
+    <dependencies>
+        <layer name="bw-auth-apacheds"/>
+        <layer name="bw-calendar-h2"/>
+        <layer name="bw-carddav-h2"/>
+        <layer name="bw-eventreg-h2"/>
+        <layer name="bw-cal-eventsubmit-h2"/>
+        <layer name="bw-cal-demosoe-h2"/>
+        <layer name="bw-notify-h2"/>
+        <layer name="bw-qs-bedework"/>
+        <layer name="bw-selfreg-h2"/>
+        <layer name="bw-synch-h2"/>
+    </dependencies>
+
+    <packages>
+        <package name="deploy.dockerosch"/>
+    </packages>
+</layer-spec>

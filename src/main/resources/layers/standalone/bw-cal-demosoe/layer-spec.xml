@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
+            name="bw-cal-demosoe">
+    <!-- Features for calendar event submission -->
+
+    <dependencies>
+        <layer name="bw-tzserver"/>
+    </dependencies>
+
+    <packages>
+        <package name="config.cal-demosoe"/>
+        <package name="deploy.calendar-xsl-calrsrc.SoEDepartmental"/>
+        <package name="deploy.war.demosoe"/>
+        <package name="deploy.xml"/>
+    </packages>
+</layer-spec>

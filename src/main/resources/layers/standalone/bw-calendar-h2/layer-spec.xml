@@ -2,7 +2,7 @@
 <layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
             name="bw-calendar-h2">
     <dependencies>
-        <layer name="bw-tzserver"/>
+        <layer name="datasources-web-server"/>
         <layer name="bw-calendar-rw"/>
         <layer name="bw-h2"/>
     </dependencies>
@@ -10,8 +10,6 @@
     <packages>
         <package name="config.calendar-h2"/>
         <package name="data.calendar-h2"/>
-        <package name="deploy.calendar-rw"/>
-        <package name="deploy.xml"/>
     </packages>
 
     <feature spec="domain.system-property">

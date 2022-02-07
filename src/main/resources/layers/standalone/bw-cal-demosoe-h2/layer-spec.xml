@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
+            name="bw-cal-demosoe-h2">
+    <!-- Features for calendar event submission -->
+
+    <dependencies>
+        <layer name="bw-cal-demosoe"/>
+        <layer name="bw-calendar-h2"/>
+    </dependencies>
+</layer-spec>

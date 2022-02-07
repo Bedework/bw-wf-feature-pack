@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
+            name="bw-cal-demosoe-pg">
+    <!-- Features for calendar event submission -->
+
+    <dependencies>
+        <layer name="bw-cal-demosoe"/>
+        <layer name="bw-calendar-pg"/>
+    </dependencies>
+</layer-spec>

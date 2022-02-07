@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
+            name="bw-cal-user">
+    <!-- Features for calendar event submission -->
+
+    <dependencies>
+        <layer name="bw-tzserver"/>
+    </dependencies>
+
+    <packages>
+        <package name="config.cal-user"/>
+        <package name="deploy.calendar-xsl-usercal"/>
+        <package name="deploy.war.usercal"/>
+        <package name="deploy.xml"/>
+    </packages>
+</layer-spec>

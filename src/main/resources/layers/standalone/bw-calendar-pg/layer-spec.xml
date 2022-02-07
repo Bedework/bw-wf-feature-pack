@@ -2,7 +2,7 @@
 <layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0"
             name="bw-calendar-pg">
     <dependencies>
-        <layer name="bw-tzserver"/>
+        <layer name="datasources-web-server"/>
         <layer name="bw-calendar-rw"/>
         <layer name="bw-postgresql"/>
     </dependencies>
@@ -10,8 +10,6 @@
     <packages>
         <package name="config.calendar-pg"/>
         <package name="data.calendar-pg"/>
-        <package name="deploy.calendar-rw"/>
-        <package name="deploy.xml"/>
     </packages>
 
     <feature spec="domain.system-property">

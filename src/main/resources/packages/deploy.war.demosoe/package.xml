@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<package-spec xmlns="urn:jboss:galleon:package:2.0" name="deploy.war.demosoe">
+    <!-- TEMP deploy deploy.war.calendar-rw until the ear is split up -->
+    <dependencies>
+        <package name="deploy.war.calendar-rw"/>
+    </dependencies>
+</package-spec>

@@ -164,7 +164,13 @@
     <orderEntry type="module" module-name="bw-calendar-engine-tools" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-csv:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-text:1.7" level="project" />
-    <orderEntry type="module" module-name="bw-calendar-xsl" />
+    <orderEntry type="module" module-name="bw-calendar-xsl-caladminrsrc" />
+    <orderEntry type="module" module-name="bw-calendar-xsl-calfeedrsrc-MainCampus" />
+    <orderEntry type="module" module-name="bw-calendar-xsl-calrsrc-MainCampus" />
+    <orderEntry type="module" module-name="bw-calendar-xsl-calrsrc-SoEDepartmental" />
+    <orderEntry type="module" module-name="bw-calendar-xsl-common" />
+    <orderEntry type="module" module-name="bw-calendar-xsl-eventsubmitrsrc" />
+    <orderEntry type="module" module-name="bw-calendar-xsl-ucalrsrc" />
     <orderEntry type="module" module-name="bw-carddav-common" />
     <orderEntry type="module" module-name="bw-carddav-server" />
     <orderEntry type="module" module-name="bw-carddav-ear" />

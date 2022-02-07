@@ -7,7 +7,9 @@
 
     <packages>
         <package name="config.calendar-ro"/>
-        <package name="deploy.calendar-ro"/>
+        <package name="deploy.calendar-xsl-calfeedrsrc.MainCampus"/>
+        <package name="deploy.calendar-xsl-calrsrc.MainCampus"/>
+        <package name="deploy.war.calendar-ro"/>
         <package name="deploy.xml"/>
     </packages>
 </layer-spec>
