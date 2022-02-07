@@ -9,6 +9,7 @@
         <package name="config.timezones"/>
         <package name="data.timezones"/>
         <package name="deploy.xml"/>
+        <package name="deploy.war.timezones"/>
     </packages>
 
     <feature spec="subsystem.logging.periodic-rotating-file-handler">
