@@ -14,12 +14,12 @@
   ~ limitations under the License.
   -->
 
-<build xmlns="urn:wildfly:feature-pack-build:3.2" producer="org.bedework:bedework-galleon-pack">
+<build xmlns="urn:wildfly:feature-pack-build:3.2" producer="org.bedework:bw-wf-feature-pack">
     <dependencies>
-        <dependency group-id="org.wildfly" artifact-id="wildfly-ee-galleon-pack">
-            <name>org.wildfly:wildfly-ee-galleon-pack</name>
+        <dependency group-id="org.bedework" artifact-id="bw-wf-core-feature-pack">
+            <name>org.bedework:bedework-core-galleon-pack</name>
             <default-configs inherit="false"/>
-            <packages inherit="false"/>
+            <packages inherit="true"/>
         </dependency>
     </dependencies>
     <config name="standalone.xml" model="standalone"/>

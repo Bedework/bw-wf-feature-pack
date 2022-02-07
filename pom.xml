@@ -18,8 +18,6 @@
          The exec-maven-plugin will execute a goal to generate
          the module templates
     -->
-    <bw-wfmodules-location>${project.basedir}/../bw-wfmodules/</bw-wfmodules-location>
-
     <bw-project-bedework>${project.basedir}/../bedework/</bw-project-bedework>
 
     <bw-project-carddav>${project.basedir}/../bw-carddav/</bw-project-carddav>
@@ -41,11 +39,10 @@
     <bw-project-xml>${project.basedir}/../bw-xml/</bw-project-xml>
 
     <bw-ear-deployment-location>${project.build.directory}/generated/wildfly/standalone/deployments/</bw-ear-deployment-location>
+
     <resourcesDir>${project.build.directory}/generated/resources</resourcesDir>
 
     <bw.deployment.properties>${project.basedir}/src/main/resources/config/wildfly.feature-pack.deploy.properties</bw.deployment.properties>
-
-    <modulesDir>${project.build.directory}/generated-modules</modulesDir>
 
     <org.wildfly.galleon-plugins.version>5.2.6.Final</org.wildfly.galleon-plugins.version>
 
@@ -86,7 +83,15 @@
     </dependency>
 
     <!-- Bedework dependencies -->
-    <!-- Bedework: Logging -->
+    <!-- Feature pack(s) -->
+
+    <dependency>
+      <groupId>org.bedework</groupId>
+      <artifactId>bw-wf-core-feature-pack</artifactId>
+      <type>pom</type>
+    </dependency>
+
+    <!-- ================= bw-logging ================= -->
 
     <dependency>
       <groupId>org.bedework</groupId>
@@ -903,23 +908,6 @@
               </target>
             </configuration>
           </execution>
-
-          <!--
-          <execution>
-            <id>Unzip apacheds</id>
-            <phase>initialize</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <target>
-                <mkdir dir="${resourcesDir}/packages/deploy.apacheds/pm/wildfly/resources/apacheds/" />
-                <unzip src="${bw-project-bedework}/build/quickstart/data/apacheds.zip"
-                       dest="${resourcesDir}/packages/deploy.apacheds/pm/wildfly/resources/apacheds/"/>
-              </target>
-            </configuration>
-          </execution>
-          -->
         </executions>
       </plugin>
 
@@ -928,27 +916,6 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>${version.exec.plugin}</version>
         <executions>
-          <execution>
-            <id>build-module-templates</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-
-            <configuration>
-              <executable>${maven.executable}</executable>
-              <workingDirectory>${bw-wfmodules-location}</workingDirectory>
-              <arguments>
-                <argument>-Pbedework-dev</argument>
-                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
-                <argument>-Dorg.bedework.thin.modules=true</argument>
-                <argument>-Dorg.bedework.modules.parent.path=${modulesDir}</argument>
-                <argument>clean</argument>
-                <argument>package</argument>
-              </arguments>
-            </configuration>
-          </execution>
-
           <!-- Build calendar wars and ears -->
 
           <execution>
@@ -1293,27 +1260,6 @@
             </configuration>
           </execution>
 
-          <!--
-          <execution>
-            <id>copy-calendar-xsl-war</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.calendar-xsl/pm/wildfly/resources/war/</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${bw-ear-deployment-location}</directory>
-                  <includes>
-                    <include>bw-calendar-xsl*/**</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-          -->
-
           <execution>
             <id>copy-bedework-war</id>
             <phase>process-resources</phase>
@@ -1461,23 +1407,6 @@
                   <includes>
                     <include>bw-timezone*/**</include>
                   </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>copy-feature-pack-module-resources</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}/modules/system/layers/base</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${modulesDir}/modules</directory>
-                  <filtering>true</filtering>
                 </resource>
               </resources>
             </configuration>
