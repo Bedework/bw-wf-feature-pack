@@ -1,4 +1,0 @@
-# This file locates all the configurations in the jboss server
-# configuration directory
-
-org.bedework.config.base=file:${org.bedework.config.dir}

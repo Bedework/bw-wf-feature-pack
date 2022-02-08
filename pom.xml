@@ -32,8 +32,6 @@
 
     <bw-project-synch>${project.basedir}/../bw-synch/</bw-project-synch>
 
-    <bw-project-timezones>${project.basedir}/../bw-timezone-server/</bw-project-timezones>
-
     <bw-ear-deployment-location>${project.build.directory}/generated/wildfly/standalone/deployments/</bw-ear-deployment-location>
 
     <resourcesDir>${project.build.directory}/generated/resources</resourcesDir>
@@ -82,8 +80,8 @@
     <!-- Feature pack(s) -->
 
     <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-wf-xml-feature-pack</artifactId>
+      <groupId>org.bedework.bw-tzsvr</groupId>
+      <artifactId>bw-wf-timezone-server-feature-pack</artifactId>
       <type>pom</type>
     </dependency>
 
@@ -578,35 +576,6 @@
       <artifactId>bw-synch-web</artifactId>
     </dependency>
 
-    <!-- ============ bw-timezone-server =========== -->
-
-    <dependency>
-      <groupId>org.bedework.bw-tzsvr</groupId>
-      <artifactId>bw-timezone-server-common</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework.bw-tzsvr</groupId>
-      <artifactId>bw-timezone-server-data</artifactId>
-      <type>zip</type>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework.bw-tzsvr</groupId>
-      <artifactId>bw-timezone-server-tzconvert</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework.bw-tzsvr</groupId>
-      <artifactId>bw-timezone-server-web</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework.bw-tzsvr</groupId>
-      <artifactId>bw-timezone-server-ear</artifactId>
-      <type>ear</type>
-    </dependency>
-
     <!-- ================= bw-util ================= -->
 
     <dependency>
@@ -1061,28 +1030,6 @@
               </arguments>
             </configuration>
           </execution>
-
-          <!-- Build timezone wars and ears -->
-          <execution>
-            <id>build-deployable-timezone-modules</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-
-            <configuration>
-              <executable>${maven.executable}</executable>
-              <workingDirectory>${bw-project-timezones}</workingDirectory>
-              <arguments>
-                <argument>-Pbedework-dev</argument>
-                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
-                <argument>clean</argument>
-                <argument>install</argument>
-              </arguments>
-            </configuration>
-          </execution>
         </executions>
       </plugin>
 
@@ -1257,25 +1204,6 @@
                   <directory>${bw-ear-deployment-location}</directory>
                   <includes>
                     <include>bw-synch*/**</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>copy-timezones-ear</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.war.timezones/pm/wildfly/resources/ear/</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${bw-ear-deployment-location}</directory>
-                  <includes>
-                    <include>bw-timezone*/**</include>
                   </includes>
                 </resource>
               </resources>

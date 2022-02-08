@@ -108,8 +108,19 @@
     <orderEntry type="module" module-name="bw-calendar-client-web-admin" />
     <orderEntry type="module" module-name="bw-calendar-client-web-rw" />
     <orderEntry type="module" module-name="bw-calendar-client-webcommon" />
-    <orderEntry type="library" name="Maven: org.bedework.deploy:bw-calendar-ro:ear:4.0.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: org.bedework.deploy:bw-calendar-all:ear:4.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="module" module-name="bw-calendar-notifyws" />
+    <orderEntry type="module" module-name="bw-calendar-pubcaldav" />
+    <orderEntry type="module" module-name="bw-calendar-publicws" />
+    <orderEntry type="module" module-name="bw-calendar-synchws" />
+    <orderEntry type="module" module-name="bw-calendar-ucaldav" />
+    <orderEntry type="module" module-name="bw-calendar-userws" />
+    <orderEntry type="module" module-name="bw-webclient-cal" />
+    <orderEntry type="module" module-name="bw-webclient-caladmin" />
+    <orderEntry type="module" module-name="bw-webclient-calauth" />
+    <orderEntry type="module" module-name="bw-webclient-demosoe" />
+    <orderEntry type="module" module-name="bw-webclient-feeder" />
+    <orderEntry type="module" module-name="bw-webclient-submit" />
+    <orderEntry type="module" module-name="bw-webclient-ucal" />
     <orderEntry type="module" module-name="bw-calendar-annotations" />
     <orderEntry type="module" module-name="bw-calendar-api" />
     <orderEntry type="module" module-name="bw-calendar-api-ro" />
