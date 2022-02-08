@@ -6,24 +6,18 @@
     <dependencies>
         <layer name="bw-common"/>
         <layer name="bw-tzserver"/>
-        <!-- Can't do - see below
-        <layer name="bw-calendar-ro"/> -->
+        <layer name="bw-calendar-ro"/>
     </dependencies>
 
     <packages>
         <!-- Can't load config here - it's db dependent -->
         <package name="deploy.calendar-xsl-caladminrsrc"/>
 
-        <!-- I want to do this:
-        <exclude name="deploy.war.calendar-ro"/>
-        <package name="deploy.war.calendar-rw"/>
-        -->
-
-        <!-- so I do this -->
-        <package name="deploy.calendar-xsl-calfeedrsrc.MainCampus"/>
-        <package name="deploy.calendar-xsl-calrsrc.MainCampus"/>
-
-        <package name="deploy.war.calendar-rw"/>
+        <package name="deploy.war.caladmin"/>
+        <package name="deploy.webservice.notifyws"/>
+        <package name="deploy.webservice.synchws"/>
+        <package name="deploy.webservice.ucaldav"/>
+        <package name="deploy.webservice.userws"/>
         <package name="deploy.xml"/>
     </packages>
 

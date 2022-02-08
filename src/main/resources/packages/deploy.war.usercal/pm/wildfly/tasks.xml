@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 
 <tasks xmlns="urn:wildfly:wildfly-feature-pack-tasks:3.0">
-    <copy-artifact artifact="org.bedework.deploy:bw-calendar-all:::ear"
+    <copy-artifact artifact="org.bedework.deploy:bw-webclient-ucal:::war"
                    to-location="standalone/deployments/"/>
 </tasks>

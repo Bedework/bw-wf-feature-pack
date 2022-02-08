@@ -166,18 +166,84 @@
       <artifactId>bw-calendar-client-webcommon</artifactId>
     </dependency>
 
-    <!-- ============= bw-calendar-x.ear ============= -->
+    <!-- ================= bw-calendar-deploy ================= -->
 
     <dependency>
       <groupId>org.bedework.deploy</groupId>
-      <artifactId>bw-calendar-ro</artifactId>
-      <type>ear</type>
+      <artifactId>bw-calendar-notifyws</artifactId>
+      <type>war</type>
     </dependency>
 
     <dependency>
       <groupId>org.bedework.deploy</groupId>
-      <artifactId>bw-calendar-all</artifactId>
-      <type>ear</type>
+      <artifactId>bw-calendar-pubcaldav</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-calendar-publicws</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-calendar-synchws</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-calendar-ucaldav</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-calendar-userws</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-webclient-cal</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-webclient-caladmin</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-webclient-calauth</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-webclient-demosoe</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-webclient-feeder</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-webclient-submit</artifactId>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-webclient-ucal</artifactId>
+      <type>war</type>
     </dependency>
 
     <!-- ============= bw-calendar-common ============= -->
