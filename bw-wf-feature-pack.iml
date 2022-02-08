@@ -14,48 +14,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.wildfly.galleon-plugins:wildfly-galleon-maven-plugin:5.2.6.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.galleon-plugins:wildfly-galleon-plugins:5.2.6.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.galleon:galleon-core:4.2.8.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss:staxmapper:1.1.0.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.galleon-plugins:transformer:5.2.6.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.galleon:galleon-maven-plugin:4.2.8.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.aether:aether-api:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.aether:aether-util:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.galleon:galleon-maven-universe:4.2.8.Final" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.maven.plugin-tools:maven-plugin-annotations:3.6.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven:maven-artifact:3.5.2" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.galleon-plugins:wildfly-config-gen:5.2.6.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.galleon-plugins:wildfly-feature-spec-gen:5.2.6.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-filtering:3.1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-shared-utils:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:2.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-utils:3.0.24" level="project" />
-    <orderEntry type="library" name="Maven: org.sonatype.plexus:plexus-build-api:0.0.7" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven:maven-model:3.5.2" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-archiver:3.4" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-io:2.7.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.11" level="project" />
-    <orderEntry type="library" name="Maven: org.iq80.snappy:snappy:0.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.tukaani:xz:1.5" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-artifact-transfer:0.9.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-common-artifact-filters:3.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.sonatype.sisu:sisu-inject-plexus:1.4.2" level="project" />
-    <orderEntry type="library" name="Maven: org.sonatype.sisu:sisu-inject-bean:1.4.2" level="project" />
-    <orderEntry type="library" name="Maven: org.sonatype.sisu:sisu-guice:noaop:2.1.7" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.maven.plugins:licenses-plugin:2.0.0.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven:maven-compat:3.3.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.wagon:wagon-provider-api:2.8" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven:maven-settings-builder:3.3.1" level="project" />
-    <orderEntry type="library" name="Maven: org.sonatype.plexus:plexus-sec-dispatcher:1.3" level="project" />
-    <orderEntry type="library" name="Maven: org.sonatype.plexus:plexus-cipher:1.4" level="project" />
-    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.plugin-testing:maven-plugin-testing-harness:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.plugins:maven-resources-plugin:3.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-plugin-api:3.6.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-artifact:3.6.3" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-utils:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-classworlds:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-core:3.6.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-settings:3.6.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-settings-builder:3.6.3" level="project" />
+    <orderEntry type="library" name="Maven: org.sonatype.plexus:plexus-sec-dispatcher:1.4" level="project" />
+    <orderEntry type="library" name="Maven: org.sonatype.plexus:plexus-cipher:1.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-builder-support:3.6.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-repository-metadata:3.6.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-model-builder:3.6.3" level="project" />
@@ -64,31 +32,45 @@
     <orderEntry type="library" name="Maven: org.apache.maven.resolver:maven-resolver-api:1.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.resolver:maven-resolver-spi:1.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.resolver:maven-resolver-util:1.4.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-shared-utils:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.sisu:org.eclipse.sisu.inject:0.3.4" level="project" />
     <orderEntry type="library" name="Maven: com.google.inject:guice:no_aop:4.2.1" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-model:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-component-annotations:2.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-interpolation:1.26" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.sisu:org.eclipse.sisu.plexus:0.0.0.M2a" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:10.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:1.3.9" level="project" />
     <orderEntry type="library" name="Maven: org.sonatype.sisu:sisu-guice:no_aop:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-filtering:3.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.sonatype.plexus:plexus-build-api:0.0.7" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.8.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.9" level="project" />
-    <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.3.3" level="project" />
-    <orderEntry type="module" module-name="bw-xml-appleServer" />
-    <orderEntry type="module" module-name="bw-xml-caldav" />
-    <orderEntry type="module" module-name="bw-xml-calws-soap" />
-    <orderEntry type="library" name="Maven: javax.jws:javax.jws-api:1.1" level="project" />
+    <orderEntry type="module" module-name="bw-synch-shared" />
+    <orderEntry type="module" module-name="bw-synch-common" />
+    <orderEntry type="module" module-name="bw-synch-web" />
+    <orderEntry type="module" module-name="bw-timezone-server-common" />
+    <orderEntry type="module" module-name="bw-timezone-server-tzconvert" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.17.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.logging.log4j:log4j-core:2.17.0" level="project" />
+    <orderEntry type="module" module-name="bw-timezone-server-web" />
     <orderEntry type="module" module-name="bw-xml-ear" />
     <orderEntry type="module" module-name="bw-xml-exchangews" />
-    <orderEntry type="module" module-name="bw-xml-icalendar" />
     <orderEntry type="module" module-name="bw-xml-bwlicense" />
-    <orderEntry type="module" module-name="bw-xml-synchws" />
     <orderEntry type="module" module-name="bw-xml-tzsvr" />
+    <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.3.3" level="project" />
+    <orderEntry type="module" module-name="bw-timezone-server-ear" />
+    <orderEntry type="module" module-name="bw-synch-ear" />
     <orderEntry type="module" module-name="bw-util-logging" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.0" level="project" />
     <orderEntry type="module" module-name="bw-access" />
     <orderEntry type="module" module-name="bw-caldav-server" />
+    <orderEntry type="module" module-name="bw-xml-synchws" />
+    <orderEntry type="library" name="Maven: javax.jws:javax.jws-api:1.1" level="project" />
+    <orderEntry type="module" module-name="bw-xml-caldav" />
+    <orderEntry type="module" module-name="bw-xml-calws-soap" />
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.1" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.soap:javax.xml.soap-api:1.4.0" level="project" />
     <orderEntry type="module" module-name="bw-caldav-util" />
@@ -126,6 +108,7 @@
     <orderEntry type="module" module-name="bw-calendar-api-ro" />
     <orderEntry type="module" module-name="bw-calendar-config" />
     <orderEntry type="module" module-name="bw-calendar-convert" />
+    <orderEntry type="module" module-name="bw-xml-icalendar" />
     <orderEntry type="module" module-name="bw-calendar-facade" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.0" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.26" level="project" />
@@ -233,6 +216,7 @@
     <orderEntry type="module" module-name="bw-logs" />
     <orderEntry type="module" module-name="bw-note-bwconnector" />
     <orderEntry type="module" module-name="bw-note-common" />
+    <orderEntry type="module" module-name="bw-xml-appleServer" />
     <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.23" level="project" />
     <orderEntry type="module" module-name="bw-note-db" />
     <orderEntry type="module" module-name="bw-note-outbound" />
@@ -244,15 +228,6 @@
     <orderEntry type="library" name="Maven: org.jasypt:jasypt:1.9.2" level="project" />
     <orderEntry type="module" module-name="bw-self-registration-web" />
     <orderEntry type="module" module-name="bw-self-registration-ear" />
-    <orderEntry type="module" module-name="bw-synch-shared" />
-    <orderEntry type="module" module-name="bw-synch-common" />
-    <orderEntry type="module" module-name="bw-synch-web" />
-    <orderEntry type="module" module-name="bw-timezone-server-common" />
-    <orderEntry type="module" module-name="bw-timezone-server-tzconvert" />
-    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.17.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.logging.log4j:log4j-core:2.17.0" level="project" />
-    <orderEntry type="module" module-name="bw-timezone-server-web" />
-    <orderEntry type="module" module-name="bw-timezone-server-ear" />
     <orderEntry type="module" module-name="bw-util-args" />
     <orderEntry type="module" module-name="bw-util-caching" />
     <orderEntry type="module" module-name="bw-util-directory" />

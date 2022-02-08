@@ -30,15 +30,11 @@
 
     <bw-project-selfreg>${project.basedir}/../bw-self-registration/</bw-project-selfreg>
 
-    <bw-project-synch>${project.basedir}/../bw-synch/</bw-project-synch>
-
     <bw-ear-deployment-location>${project.build.directory}/generated/wildfly/standalone/deployments/</bw-ear-deployment-location>
 
     <resourcesDir>${project.build.directory}/generated/resources</resourcesDir>
 
     <bw.deployment.properties>${project.basedir}/src/main/resources/config/wildfly.feature-pack.deploy.properties</bw.deployment.properties>
-
-    <org.wildfly.galleon-plugins.version>5.2.6.Final</org.wildfly.galleon-plugins.version>
 
     <feature-pack.resources.directory>${project.basedir}/src/main/resources</feature-pack.resources.directory>
     <!--
@@ -55,12 +51,6 @@
 
   <dependencies>
     <!-- Wildfly dependencies for build -->
-
-    <dependency>
-      <groupId>org.wildfly.galleon-plugins</groupId>
-      <artifactId>wildfly-galleon-maven-plugin</artifactId>
-      <version>${org.wildfly.galleon-plugins.version}</version>
-    </dependency>
 
     <dependency>
       <groupId>org.apache.maven.plugins</groupId>
@@ -80,8 +70,8 @@
     <!-- Feature pack(s) -->
 
     <dependency>
-      <groupId>org.bedework.bw-tzsvr</groupId>
-      <artifactId>bw-wf-timezone-server-feature-pack</artifactId>
+      <groupId>org.bedework.bw-synch</groupId>
+      <artifactId>bw-wf-synch-feature-pack</artifactId>
       <type>pom</type>
     </dependency>
 
@@ -559,23 +549,6 @@
       <type>ear</type>
     </dependency>
 
-    <!-- ================= bw-synch ================= -->
-
-    <dependency>
-      <groupId>org.bedework.bw-synch</groupId>
-      <artifactId>bw-synch-shared</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework.bw-synch</groupId>
-      <artifactId>bw-synch-common</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework.bw-synch</groupId>
-      <artifactId>bw-synch-web</artifactId>
-    </dependency>
-
     <!-- ================= bw-util ================= -->
 
     <dependency>
@@ -1008,28 +981,6 @@
               </arguments>
             </configuration>
           </execution>
-
-          <!-- Build synch wars and ears -->
-          <execution>
-            <id>build-deployable-synch-modules</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-
-            <configuration>
-              <executable>${maven.executable}</executable>
-              <workingDirectory>${bw-project-synch}</workingDirectory>
-              <arguments>
-                <argument>-Pbedework-dev</argument>
-                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
-                <argument>clean</argument>
-                <argument>install</argument>
-              </arguments>
-            </configuration>
-          </execution>
         </executions>
       </plugin>
 
@@ -1190,39 +1141,17 @@
               </resources>
             </configuration>
           </execution>
-
-          <execution>
-            <id>copy-synch-ear</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.synch/pm/wildfly/resources/ear/</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${bw-ear-deployment-location}</directory>
-                  <includes>
-                    <include>bw-synch*/**</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
         </executions>
       </plugin>
 
       <plugin>
         <groupId>org.wildfly.galleon-plugins</groupId>
         <artifactId>wildfly-galleon-maven-plugin</artifactId>
-        <version>${org.wildfly.galleon-plugins.version}</version>
+
         <executions>
           <execution>
             <id>galleon-pack-build</id>
-            <goals>
-              <goal>build-feature-pack</goal>
-            </goals>
-            <phase>package</phase>
+
             <configuration>
               <fork-embedded>false</fork-embedded>
               <resourcesDir>${resourcesDir}</resourcesDir>

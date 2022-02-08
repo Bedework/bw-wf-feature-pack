@@ -16,8 +16,8 @@
 
 <build xmlns="urn:wildfly:feature-pack-build:3.2" producer="org.bedework:bw-wf-feature-pack">
     <dependencies>
-        <dependency group-id="org.bedework.bw-tzsvr" artifact-id="bw-wf-timezone-server-feature-pack">
-            <name>org.bedework.bw-tzsvr:bedework-timezone-server-galleon-pack</name>
+        <dependency group-id="org.bedework.bw-synch" artifact-id="bw-wf-synch-feature-pack">
+            <name>org.bedework.bw-tzsvr:bw-wf-synch-feature-pack</name>
             <default-configs inherit="false"/>
             <packages inherit="true"/>
         </dependency>
