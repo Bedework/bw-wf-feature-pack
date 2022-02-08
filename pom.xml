@@ -36,8 +36,6 @@
 
     <bw-project-timezones>${project.basedir}/../bw-timezone-server/</bw-project-timezones>
 
-    <bw-project-xml>${project.basedir}/../bw-xml/</bw-project-xml>
-
     <bw-ear-deployment-location>${project.build.directory}/generated/wildfly/standalone/deployments/</bw-ear-deployment-location>
 
     <resourcesDir>${project.build.directory}/generated/resources</resourcesDir>
@@ -87,7 +85,7 @@
 
     <dependency>
       <groupId>org.bedework</groupId>
-      <artifactId>bw-wf-core-feature-pack</artifactId>
+      <artifactId>bw-wf-xml-feature-pack</artifactId>
       <type>pom</type>
     </dependency>
 
@@ -685,55 +683,6 @@
       <artifactId>bw-webdav</artifactId>
     </dependency>
 
-    <!-- Bedework: XML -->
-
-    <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-xml-appleServer</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-xml-caldav</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-xml-calws-soap</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-xml-ear</artifactId>
-      <type>ear</type>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-xml-exchangews</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-xml-icalendar</artifactId>
-      <version>${bw-xml.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-xml-bwlicense</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-xml-synchws</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-xml-tzsvr</artifactId>
-    </dependency>
-
     <dependency>
       <groupId>${ical4j.groupId}</groupId>
       <artifactId>${ical4j.artifactId}</artifactId>
@@ -916,27 +865,6 @@
         <version>${version.exec.plugin}</version>
         <executions>
           <!-- Build calendar wars and ears -->
-
-          <execution>
-            <id>build-deployable-xml-modules</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-
-            <configuration>
-              <executable>${maven.executable}</executable>
-              <workingDirectory>${bw-project-xml}</workingDirectory>
-              <arguments>
-                <argument>-Pbedework-dev</argument>
-                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
-                <argument>clean</argument>
-                <argument>install</argument>
-              </arguments>
-            </configuration>
-          </execution>
 
           <execution>
             <id>build-deployable-calendar-modules</id>
@@ -1200,26 +1128,6 @@
           </execution>
 
           <!-- Deploy each ear to the correct resource directory -->
-
-          <execution>
-            <id>copy-xml-ear</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.xml/pm/wildfly/resources/ear/</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${bw-ear-deployment-location}</directory>
-                  <includes>
-                    <include>bw-xml*/**</include>
-                  </includes>
-                  <filtering>true</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
 
           <execution>
             <id>copy-calendar-ro-ear</id>
