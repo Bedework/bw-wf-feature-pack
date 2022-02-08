@@ -24,8 +24,6 @@
 
     <bw-project-category>${project.basedir}/../bw-category/</bw-project-category>
 
-    <bw-project-calendar-deploy>${project.basedir}/../bw-calendar-deploy/</bw-project-calendar-deploy>
-
     <bw-project-eventreg>${project.basedir}/../bw-event-registration/</bw-project-eventreg>
 
     <bw-project-notifier>${project.basedir}/../bw-notifier/</bw-project-notifier>
@@ -866,50 +864,6 @@
         <executions>
           <!-- Build calendar wars and ears -->
 
-          <execution>
-            <id>build-deployable-calendar-modules</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-
-            <configuration>
-              <executable>${maven.executable}</executable>
-              <workingDirectory>${bw-project-calendar-deploy}</workingDirectory>
-              <arguments>
-                <argument>-Pbedework-dev</argument>
-                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
-                <argument>-Dbw-bedework.project.directory=${bw-project-bedework}</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
-                <argument>clean</argument>
-                <argument>install</argument>
-              </arguments>
-            </configuration>
-          </execution>
-
-          <!-- Build calendar xsl war
-          <execution>
-            <id>build-deployable-calendar-xsl</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-
-            <configuration>
-              <executable>${maven.executable}</executable>
-              <workingDirectory>${bw-project-calendar-xsl}</workingDirectory>
-              <arguments>
-                <argument>-Pbedework-dev</argument>
-                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
-                <argument>clean</argument>
-                <argument>install</argument>
-              </arguments>
-            </configuration>
-          </execution> -->
-
           <!-- Build carddav wars and ears -->
           <execution>
             <id>build-deployable-carddav-modules</id>
@@ -1128,63 +1082,6 @@
           </execution>
 
           <!-- Deploy each ear to the correct resource directory -->
-
-          <execution>
-            <id>copy-calendar-ro-ear</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.war.calendar-ro/pm/wildfly/resources/ear/</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${bw-ear-deployment-location}</directory>
-                  <includes>
-                    <include>bw-calro*/**</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>copy-calendar-rw-ear</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.war.calendar-rw/pm/wildfly/resources/ear/</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${bw-ear-deployment-location}</directory>
-                  <includes>
-                    <include>bw-cal-*/**</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>copy-bedework-war</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.qs-bedework/pm/wildfly/resources/war/</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${bw-ear-deployment-location}</directory>
-                  <includes>
-                    <include>bedework*/**</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
 
           <execution>
             <id>copy-carddav-ear</id>
