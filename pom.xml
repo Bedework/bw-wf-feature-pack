@@ -26,8 +26,6 @@
 
     <bw-project-eventreg>${project.basedir}/../bw-event-registration/</bw-project-eventreg>
 
-    <bw-project-notifier>${project.basedir}/../bw-notifier/</bw-project-notifier>
-
     <bw-project-selfreg>${project.basedir}/../bw-self-registration/</bw-project-selfreg>
 
     <bw-ear-deployment-location>${project.build.directory}/generated/wildfly/standalone/deployments/</bw-ear-deployment-location>
@@ -68,6 +66,12 @@
 
     <!-- Bedework dependencies -->
     <!-- Feature pack(s) -->
+
+    <dependency>
+      <groupId>org.bedework.notifier</groupId>
+      <artifactId>bw-wf-note-feature-pack</artifactId>
+      <type>pom</type>
+    </dependency>
 
     <dependency>
       <groupId>org.bedework.bw-synch</groupId>
@@ -499,38 +503,6 @@
       <artifactId>bw-logs</artifactId>
     </dependency>
 
-    <!-- ================= bw-notifier ================= -->
-
-    <dependency>
-      <groupId>org.bedework.notifier</groupId>
-      <artifactId>bw-note-bwconnector</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework.notifier</groupId>
-      <artifactId>bw-note-common</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework.notifier</groupId>
-      <artifactId>bw-note-db</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework.notifier</groupId>
-      <artifactId>bw-note-outbound</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework.notifier</groupId>
-      <artifactId>bw-note-shared</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework.notifier</groupId>
-      <artifactId>bw-note-servlet</artifactId>
-    </dependency>
-
     <!-- ============ bw-self-registration ============ -->
 
     <dependency>
@@ -938,28 +910,6 @@
             </configuration>
           </execution>
 
-          <!-- Build notifier wars and ears -->
-          <execution>
-            <id>build-deployable-notifier-modules</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-
-            <configuration>
-              <executable>${maven.executable}</executable>
-              <workingDirectory>${bw-project-notifier}</workingDirectory>
-              <arguments>
-                <argument>-Pbedework-dev</argument>
-                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
-                <argument>clean</argument>
-                <argument>install</argument>
-              </arguments>
-            </configuration>
-          </execution>
-
           <!-- Build selfreg wars and ears -->
           <execution>
             <id>build-deployable-selfreg-modules</id>
@@ -1098,25 +1048,6 @@
                   <directory>${bw-ear-deployment-location}</directory>
                   <includes>
                     <include>bw-event-reg*/**</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>copy-notifier-ear</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.notify/pm/wildfly/resources/ear/</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${bw-ear-deployment-location}</directory>
-                  <includes>
-                    <include>bw-notifier*/**</include>
                   </includes>
                 </resource>
               </resources>
