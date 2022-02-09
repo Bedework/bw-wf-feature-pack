@@ -1,7 +1,0 @@
-<?xml version="1.0" ?>
-
-<package-spec xmlns="urn:jboss:galleon:package:2.0" name="deploy.calendar-xsl-calrsrc.SoEDepartmental">
-  <dependencies>
-    <package name="deploy.calendar-xsl-common" />
-  </dependencies>
-</package-spec>

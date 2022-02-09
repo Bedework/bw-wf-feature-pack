@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
-<index-properties xmlns="http://bedework.org/ns/" type="org.bedework.indexer.IndexPropertiesImpl">
-  <indexerURL>http://localhost:9200</indexerURL>
-</index-properties>
