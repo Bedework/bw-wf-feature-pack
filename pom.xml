@@ -64,6 +64,12 @@
     <!-- Feature pack(s) -->
 
     <dependency>
+      <groupId>org.bedework</groupId>
+      <artifactId>bw-wf-carddav-feature-pack</artifactId>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
       <groupId>org.bedework.bw-cat</groupId>
       <artifactId>bw-wf-category-feature-pack</artifactId>
       <type>pom</type>
@@ -406,24 +412,6 @@
       <groupId>org.bedework.bwxsl</groupId>
       <artifactId>bw-calendar-xsl-ucalrsrc</artifactId>
       <type>war</type>
-    </dependency>
-
-    <!-- ================= bw-carddav ================= -->
-
-    <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-carddav-common</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-carddav-server</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework</groupId>
-      <artifactId>bw-carddav-ear</artifactId>
-      <type>ear</type>
     </dependency>
 
     <!-- ============ bw-cli ============ -->
@@ -807,37 +795,6 @@
       </plugin>
 
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>${version.exec.plugin}</version>
-        <executions>
-          <!-- Build calendar wars and ears -->
-
-          <!-- Build carddav wars and ears -->
-          <execution>
-            <id>build-deployable-carddav-modules</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-
-            <configuration>
-              <executable>${maven.executable}</executable>
-              <workingDirectory>${bw-project-carddav}</workingDirectory>
-              <arguments>
-                <argument>-Pbedework-dev</argument>
-                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
-                <argument>clean</argument>
-                <argument>install</argument>
-              </arguments>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
         <version>${version.resources.plugin}</version>
@@ -892,27 +849,6 @@
                   <includes>
                     <include>layers/**</include>
                     <include>packages/**</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-
-          <!-- Deploy each ear to the correct resource directory -->
-
-          <execution>
-            <id>copy-carddav-ear</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.carddav/pm/wildfly/resources/ear/</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${bw-ear-deployment-location}</directory>
-                  <includes>
-                    <include>bw-carddav*/**</include>
                   </includes>
                 </resource>
               </resources>

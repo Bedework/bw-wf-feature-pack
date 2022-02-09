@@ -48,6 +48,11 @@
     <orderEntry type="library" name="Maven: org.sonatype.plexus:plexus-build-api:0.0.7" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.8.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.9" level="project" />
+    <orderEntry type="module" module-name="bw-category-common" />
+    <orderEntry type="module" module-name="bw-category-ical" />
+    <orderEntry type="module" module-name="bw-category-impl" />
+    <orderEntry type="module" module-name="bw-category-service" />
+    <orderEntry type="module" module-name="bw-category-web" />
     <orderEntry type="module" module-name="bw-note-bwconnector" />
     <orderEntry type="module" module-name="bw-note-common" />
     <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.23" level="project" />
@@ -71,6 +76,7 @@
     <orderEntry type="module" module-name="bw-xml-exchangews" />
     <orderEntry type="module" module-name="bw-xml-bwlicense" />
     <orderEntry type="module" module-name="bw-xml-tzsvr" />
+    <orderEntry type="module" module-name="bw-category-ear" />
     <orderEntry type="module" module-name="bw-timezone-server-ear" />
     <orderEntry type="module" module-name="bw-note-ear" />
     <orderEntry type="module" module-name="bw-self-registration-ear" />
@@ -167,6 +173,9 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.logging.log4j:log4j-api:2.17.0" level="project" />
     <orderEntry type="library" name="Maven: org.elasticsearch:jna:5.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.opensearch.client:opensearch-rest-high-level-client:1.2.3" level="project" />
+    <orderEntry type="library" name="Maven: org.opensearch.client:opensearch-rest-client:1.2.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpasyncclient:4.1.4" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore-nio:4.4.12" level="project" />
     <orderEntry type="library" name="Maven: org.opensearch.plugin:mapper-extras-client:1.2.3" level="project" />
     <orderEntry type="library" name="Maven: org.opensearch.plugin:parent-join-client:1.2.3" level="project" />
     <orderEntry type="library" name="Maven: org.opensearch.plugin:aggs-matrix-stats-client:1.2.3" level="project" />
@@ -192,19 +201,11 @@
     <orderEntry type="module" module-name="bw-carddav-common" />
     <orderEntry type="module" module-name="bw-carddav-server" />
     <orderEntry type="module" module-name="bw-carddav-ear" />
-    <orderEntry type="module" module-name="bw-category-common" />
+    <orderEntry type="module" module-name="bw-cli" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.14" level="project" />
-    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
-    <orderEntry type="module" module-name="bw-category-ical" />
-    <orderEntry type="module" module-name="bw-category-impl" />
-    <orderEntry type="library" name="Maven: org.opensearch.client:opensearch-rest-client:1.2.3" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpasyncclient:4.1.4" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore-nio:4.4.12" level="project" />
-    <orderEntry type="module" module-name="bw-category-service" />
-    <orderEntry type="module" module-name="bw-category-web" />
-    <orderEntry type="module" module-name="bw-cli" />
     <orderEntry type="module" module-name="bw-util-cli" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="module" module-name="bw-util-jolokia" />
     <orderEntry type="module" module-name="bw-event-registration-common" />
     <orderEntry type="library" name="Maven: org.apache.geronimo.framework:geronimo-kernel:2.2.1" level="project" />
