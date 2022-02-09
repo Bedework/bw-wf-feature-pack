@@ -21,8 +21,15 @@
             <default-configs inherit="false"/>
             <packages inherit="true"/>
         </dependency>
+
         <dependency group-id="org.bedework.notifier" artifact-id="bw-wf-note-feature-pack">
             <name>org.bedework.notifier:bw-wf-note-feature-pack</name>
+            <default-configs inherit="false"/>
+            <packages inherit="true"/>
+        </dependency>
+
+        <dependency group-id="org.bedework.selfreg" artifact-id="bw-wf-self-registration-feature-pack">
+            <name>org.bedework.selfreg:bw-wf-self-registration-feature-pack</name>
             <default-configs inherit="false"/>
             <packages inherit="true"/>
         </dependency>

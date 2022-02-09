@@ -74,6 +74,12 @@
     </dependency>
 
     <dependency>
+      <groupId>org.bedework.selfreg</groupId>
+      <artifactId>bw-wf-self-registration-feature-pack</artifactId>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
       <groupId>org.bedework.bw-synch</groupId>
       <artifactId>bw-wf-synch-feature-pack</artifactId>
       <type>pom</type>
@@ -503,24 +509,6 @@
       <artifactId>bw-logs</artifactId>
     </dependency>
 
-    <!-- ============ bw-self-registration ============ -->
-
-    <dependency>
-      <groupId>org.bedework.selfreg</groupId>
-      <artifactId>bw-self-registration-common</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework.selfreg</groupId>
-      <artifactId>bw-self-registration-web</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bedework.selfreg</groupId>
-      <artifactId>bw-self-registration-ear</artifactId>
-      <type>ear</type>
-    </dependency>
-
     <!-- ================= bw-util ================= -->
 
     <dependency>
@@ -909,28 +897,6 @@
               </arguments>
             </configuration>
           </execution>
-
-          <!-- Build selfreg wars and ears -->
-          <execution>
-            <id>build-deployable-selfreg-modules</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-
-            <configuration>
-              <executable>${maven.executable}</executable>
-              <workingDirectory>${bw-project-selfreg}</workingDirectory>
-              <arguments>
-                <argument>-Pbedework-dev</argument>
-                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
-                <argument>clean</argument>
-                <argument>install</argument>
-              </arguments>
-            </configuration>
-          </execution>
         </executions>
       </plugin>
 
@@ -1048,25 +1014,6 @@
                   <directory>${bw-ear-deployment-location}</directory>
                   <includes>
                     <include>bw-event-reg*/**</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>copy-selfreg-ear</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.selfreg/pm/wildfly/resources/ear/</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${bw-ear-deployment-location}</directory>
-                  <includes>
-                    <include>bw-self-reg*/**</include>
                   </includes>
                 </resource>
               </resources>

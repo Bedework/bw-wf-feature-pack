@@ -48,6 +48,13 @@
     <orderEntry type="library" name="Maven: org.sonatype.plexus:plexus-build-api:0.0.7" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.8.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.9" level="project" />
+    <orderEntry type="module" module-name="bw-note-bwconnector" />
+    <orderEntry type="module" module-name="bw-note-common" />
+    <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.23" level="project" />
+    <orderEntry type="module" module-name="bw-note-db" />
+    <orderEntry type="module" module-name="bw-note-outbound" />
+    <orderEntry type="module" module-name="bw-note-shared" />
+    <orderEntry type="module" module-name="bw-note-servlet" />
     <orderEntry type="module" module-name="bw-synch-shared" />
     <orderEntry type="module" module-name="bw-synch-common" />
     <orderEntry type="module" module-name="bw-synch-web" />
@@ -56,12 +63,14 @@
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.17.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.logging.log4j:log4j-core:2.17.0" level="project" />
     <orderEntry type="module" module-name="bw-timezone-server-web" />
+    <orderEntry type="module" module-name="bw-xml-appleServer" />
     <orderEntry type="module" module-name="bw-xml-ear" />
     <orderEntry type="module" module-name="bw-xml-exchangews" />
     <orderEntry type="module" module-name="bw-xml-bwlicense" />
     <orderEntry type="module" module-name="bw-xml-tzsvr" />
     <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.3.3" level="project" />
     <orderEntry type="module" module-name="bw-timezone-server-ear" />
+    <orderEntry type="module" module-name="bw-note-ear" />
     <orderEntry type="module" module-name="bw-synch-ear" />
     <orderEntry type="module" module-name="bw-util-logging" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.0" level="project" />
@@ -214,14 +223,6 @@
     <orderEntry type="module" module-name="bw-event-registration-ear" />
     <orderEntry type="module" module-name="bw-jsforj" />
     <orderEntry type="module" module-name="bw-logs" />
-    <orderEntry type="module" module-name="bw-note-bwconnector" />
-    <orderEntry type="module" module-name="bw-note-common" />
-    <orderEntry type="module" module-name="bw-xml-appleServer" />
-    <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.23" level="project" />
-    <orderEntry type="module" module-name="bw-note-db" />
-    <orderEntry type="module" module-name="bw-note-outbound" />
-    <orderEntry type="module" module-name="bw-note-shared" />
-    <orderEntry type="module" module-name="bw-note-servlet" />
     <orderEntry type="module" module-name="bw-self-registration-common" />
     <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
