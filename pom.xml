@@ -25,8 +25,6 @@
   </scm>
 
   <dependencies>
-    <!-- Wildfly dependencies for build -->
-
     <!-- Bedework dependencies -->
     <!-- Feature pack(s) -->
 
@@ -70,6 +68,12 @@
       <groupId>org.bedework.bw-synch</groupId>
       <artifactId>bw-wf-synch-feature-pack</artifactId>
       <type>pom</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-opensearch-qs</artifactId>
+      <type>zip</type>
     </dependency>
   </dependencies>
 

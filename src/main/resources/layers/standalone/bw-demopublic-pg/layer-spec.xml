@@ -15,6 +15,6 @@
     </dependencies>
 
     <packages>
-        <package name="deploy.dockerosch"/>
+        <package name="deploy.opensearch-qs"/>
     </packages>
 </layer-spec>

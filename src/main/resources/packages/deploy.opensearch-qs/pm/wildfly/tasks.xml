@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+
+<tasks xmlns="urn:wildfly:wildfly-feature-pack-tasks:3.0">
+    <copy-artifact artifact="org.bedework.deploy:bw-opensearch-qs:::zip"
+               to-location=""
+                   extract="true"/>
+    <copy-path src="resources/bin/"
+               relative-to="resources"
+               target="bin/"
+               replace-props="true"/>
+    <file-permissions phase="FINALIZING">
+        <permission value="755">
+            <filter pattern="opensearch*/bin/*" include="true"/>
+        </permission>
+    </file-permissions>
+</tasks>
