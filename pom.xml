@@ -24,8 +24,6 @@
 
     <bw-project-category>${project.basedir}/../bw-category/</bw-project-category>
 
-    <bw-project-eventreg>${project.basedir}/../bw-event-registration/</bw-project-eventreg>
-
     <bw-project-selfreg>${project.basedir}/../bw-self-registration/</bw-project-selfreg>
 
     <bw-ear-deployment-location>${project.build.directory}/generated/wildfly/standalone/deployments/</bw-ear-deployment-location>
@@ -66,6 +64,12 @@
 
     <!-- Bedework dependencies -->
     <!-- Feature pack(s) -->
+
+    <dependency>
+      <groupId>org.bedework.evreg</groupId>
+      <artifactId>bw-wf-event-registration-feature-pack</artifactId>
+      <type>pom</type>
+    </dependency>
 
     <dependency>
       <groupId>org.bedework.notifier</groupId>
@@ -875,28 +879,6 @@
               </arguments>
             </configuration>
           </execution>
-
-          <!-- Build eventreg wars and ears -->
-          <execution>
-            <id>build-deployable-eventreg-modules</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-
-            <configuration>
-              <executable>${maven.executable}</executable>
-              <workingDirectory>${bw-project-eventreg}</workingDirectory>
-              <arguments>
-                <argument>-Pbedework-dev</argument>
-                <argument>-Dbw-wildfly-feature-pack-build=true</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.properties=${bw.deployment.properties}</argument>
-                <argument>-Dorg.bedework.feature-build.deployment.basedir=${project.build.directory}/generated/</argument>
-                <argument>clean</argument>
-                <argument>install</argument>
-              </arguments>
-            </configuration>
-          </execution>
         </executions>
       </plugin>
 
@@ -995,25 +977,6 @@
                   <directory>${bw-ear-deployment-location}</directory>
                   <includes>
                     <include>bw-category*/**</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>copy-eventreg-ear</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${resourcesDir}/packages/deploy.war.eventreg/pm/wildfly/resources/ear/</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${bw-ear-deployment-location}</directory>
-                  <includes>
-                    <include>bw-event-reg*/**</include>
                   </includes>
                 </resource>
               </resources>

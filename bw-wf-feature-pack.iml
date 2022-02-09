@@ -55,6 +55,8 @@
     <orderEntry type="module" module-name="bw-note-outbound" />
     <orderEntry type="module" module-name="bw-note-shared" />
     <orderEntry type="module" module-name="bw-note-servlet" />
+    <orderEntry type="module" module-name="bw-self-registration-common" />
+    <orderEntry type="module" module-name="bw-self-registration-web" />
     <orderEntry type="module" module-name="bw-synch-shared" />
     <orderEntry type="module" module-name="bw-synch-common" />
     <orderEntry type="module" module-name="bw-synch-web" />
@@ -63,14 +65,15 @@
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.17.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.logging.log4j:log4j-core:2.17.0" level="project" />
     <orderEntry type="module" module-name="bw-timezone-server-web" />
+    <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.3.3" level="project" />
+    <orderEntry type="module" module-name="bw-timezone-server-ear" />
+    <orderEntry type="module" module-name="bw-note-ear" />
     <orderEntry type="module" module-name="bw-xml-appleServer" />
     <orderEntry type="module" module-name="bw-xml-ear" />
     <orderEntry type="module" module-name="bw-xml-exchangews" />
     <orderEntry type="module" module-name="bw-xml-bwlicense" />
     <orderEntry type="module" module-name="bw-xml-tzsvr" />
-    <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.3.3" level="project" />
-    <orderEntry type="module" module-name="bw-timezone-server-ear" />
-    <orderEntry type="module" module-name="bw-note-ear" />
+    <orderEntry type="module" module-name="bw-self-registration-ear" />
     <orderEntry type="module" module-name="bw-synch-ear" />
     <orderEntry type="module" module-name="bw-util-logging" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.0" level="project" />
@@ -81,6 +84,7 @@
     <orderEntry type="module" module-name="bw-xml-caldav" />
     <orderEntry type="module" module-name="bw-xml-calws-soap" />
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.soap:javax.xml.soap-api:1.4.0" level="project" />
     <orderEntry type="module" module-name="bw-caldav-util" />
     <orderEntry type="module" module-name="bw-calendar-client-admin" />
@@ -223,12 +227,6 @@
     <orderEntry type="module" module-name="bw-event-registration-ear" />
     <orderEntry type="module" module-name="bw-jsforj" />
     <orderEntry type="module" module-name="bw-logs" />
-    <orderEntry type="module" module-name="bw-self-registration-common" />
-    <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
-    <orderEntry type="library" name="Maven: org.jasypt:jasypt:1.9.2" level="project" />
-    <orderEntry type="module" module-name="bw-self-registration-web" />
-    <orderEntry type="module" module-name="bw-self-registration-ear" />
     <orderEntry type="module" module-name="bw-util-args" />
     <orderEntry type="module" module-name="bw-util-caching" />
     <orderEntry type="module" module-name="bw-util-directory" />
@@ -254,6 +252,7 @@
     <orderEntry type="module" module-name="bw-util-servlet" />
     <orderEntry type="module" module-name="bw-util-servlet-filters" />
     <orderEntry type="module" module-name="bw-util-security" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
     <orderEntry type="module" module-name="bw-util-tz" />
     <orderEntry type="library" name="Maven: com.sun.mail:javax.mail:1.6.2" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
@@ -337,6 +336,7 @@
     <orderEntry type="library" name="Maven: org.opensaml:opensaml-xacml-api:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.opensaml:opensaml-xacml-saml-impl:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.opensaml:opensaml-xacml-saml-api:3.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jasypt:jasypt:1.9.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.santuario:xmlsec:2.1.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.woodstox:woodstox-core:5.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.woodstox:stax2-api:3.1.4" level="project" />
