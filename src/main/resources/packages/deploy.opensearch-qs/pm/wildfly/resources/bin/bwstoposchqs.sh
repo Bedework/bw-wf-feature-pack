@@ -20,10 +20,6 @@ esac
 if $cygwin ; then
     [ -n "$JBOSS_HOME" ] &&
         JBOSS_HOME=`cygpath --unix "$JBOSS_HOME"`
-    [ -n "$JAVA_HOME" ] &&
-        JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
-    [ -n "$JAVAC_JAR" ] &&
-        JAVAC_JAR=`cygpath --unix "$JAVAC_JAR"`
 fi
 
 # Setup JBOSS_HOME
@@ -43,18 +39,9 @@ export JBOSS_HOME
 # For Cygwin, switch paths to Windows format before running java
 if $cygwin; then
     JBOSS_HOME=`cygpath --path --windows "$JBOSS_HOME"`
-    JAVA_HOME=`cygpath --path --windows "$JAVA_HOME"`
-    JBOSS_MODULEPATH=`cygpath --path --windows "$JBOSS_MODULEPATH"`
 fi
 
-# Override ibm JRE behavior
-JAVA_OPTS="$JAVA_OPTS -Dcom.ibm.jsse2.overrideDefaultTLS=true"
-
-JBOSS_CONFIG="standalone"
-JBOSS_SERVER_DIR="$JBOSS_HOME/$JBOSS_CONFIG"
-JBOSS_DATA_DIR="$JBOSS_SERVER_DIR/data"
-
-OSCH_HOME="$JBOSS_HOME/opensearch-${opensearch.version}"
+OSCH_HOME="$JBOSS_HOME/opensearch"
 
 echo "About to start opensearch from directory $OSCH_HOME"
 

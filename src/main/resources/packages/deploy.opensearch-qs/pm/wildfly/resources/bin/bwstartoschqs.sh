@@ -42,7 +42,7 @@ if $cygwin; then
     JBOSS_MODULEPATH=`cygpath --path --windows "$JBOSS_MODULEPATH"`
 fi
 
-OSCH_HOME="$JBOSS_HOME/opensearch-1.2.4"
+OSCH_HOME="$JBOSS_HOME/opensearch"
 
 echo "About to start opensearch from directory $OSCH_HOME"
 echo "with startup command:"
