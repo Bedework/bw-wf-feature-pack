@@ -72,6 +72,12 @@
 
     <dependency>
       <groupId>org.bedework.deploy</groupId>
+      <artifactId>bw-opensearch-GeoLite2-City</artifactId>
+      <type>zip</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework.deploy</groupId>
       <artifactId>bw-opensearch-qs</artifactId>
       <type>zip</type>
     </dependency>

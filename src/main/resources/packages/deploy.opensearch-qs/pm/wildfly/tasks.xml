@@ -4,6 +4,11 @@
     <copy-artifact artifact="org.bedework.deploy:bw-opensearch-qs:::zip"
                to-location=""
                    extract="true"/>
+    <!-- Copy in a large - separately zipped object -->
+    <copy-artifact artifact="org.bedework.deploy:bw-opensearch-GeoLite2-City:::zip"
+                   to-location="opensearch/modules"
+                   extract="true"/>
+    <!-- Some scripts -->
     <copy-path src="resources/bin/"
                relative-to="resources"
                target="bin/"
